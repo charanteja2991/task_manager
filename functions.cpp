@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include <memory>
 #include <algorithm>
+#include <thread>
 
 // this is where all the main tasks addresses are lived.
 std::vector<std::shared_ptr<task>> VEC_task; 
@@ -90,20 +91,33 @@ bool load_tasks_into_containers() noexcept(true)
 		VEC_task_time.push_back(VEC_task.back());
 	}
 	
-	std::sort(VEC_task_priority.begin(), VEC_task_priority.end(), 
-		[](std::shared_ptr<task> a, std::shared_ptr<task> b)
+	std::thread priority_sort_thread(
+		[]()
 		{
-			return a->priority > b->priority;
+			std::sort(VEC_task_priority.begin(), VEC_task_priority.end(),
+				[](std::shared_ptr<task> &a, std::shared_ptr<task> &b)
+				{
+					return a->priority > b->priority;
+				}
+			);
 		}
 	);
-
-	std::sort(VEC_task_time.begin(), VEC_task_time.end(),
-		[](std::shared_ptr<task> a, std::shared_ptr<task> b)
+	
+	std::thread time_sort_thread(
+		[]()
 		{
-			return a->time_needed > b->time_needed;
+			std::sort(VEC_task_time.begin(), VEC_task_time.end(),
+				[](std::shared_ptr<task> &a, std::shared_ptr<task> &b)
+				{
+					return a->time_needed > b->time_needed;
+				}
+			);
 		}
 	);
-
+	
+	priority_sort_thread.join();
+	time_sort_thread.join();
+	
 	return true;
 }
 
@@ -140,7 +154,7 @@ void start() noexcept(true)
 	std::cout << "======================================================================================================\n";
 
 	if(load_tasks_into_containers()) // loads task objects into VEC_task, VEC_task_priority, VEC_task_time, UOMAP_global_keywords
-		show_tasks(VEC_task_time);
+		show_tasks(VEC_task_priority);
 	else 
 		return;
 

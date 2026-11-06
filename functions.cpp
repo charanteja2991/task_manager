@@ -6,17 +6,18 @@
 #include <vector>
 #include <unordered_map>
 #include <memory>
+#include <algorithm>
 
 // this is where all the main tasks addresses are lived.
 std::vector<std::shared_ptr<task>> VEC_task; 
 
 // these sort pointers according to priority and time
-extern std::vector<std::weak_ptr<task>> 
+std::vector<std::shared_ptr<task>> 
 	VEC_task_priority,
 	VEC_task_time;
 
 // hash map for string->tasks that makes searching easy through keywords
-extern std::unordered_map<std::string, std::vector<std::weak_ptr<task>>> UOMAP_global_keywords;
+std::unordered_map<std::string, std::vector<std::shared_ptr<task>>> UOMAP_global_keywords;
 
 task string_to_task_object(std::string &str)
 {
@@ -85,21 +86,38 @@ bool load_tasks_into_containers() noexcept(true)
 	while(std::getline(tasks_file_reader, STR_line))
 	{
 		VEC_task.push_back(std::make_shared<task>(string_to_task_object(STR_line)));	
+		VEC_task_priority.push_back(VEC_task.back());
+		VEC_task_time.push_back(VEC_task.back());
 	}
+	
+	std::sort(VEC_task_priority.begin(), VEC_task_priority.end(), 
+		[](std::shared_ptr<task> a, std::shared_ptr<task> b)
+		{
+			return a->priority > b->priority;
+		}
+	);
+
+	std::sort(VEC_task_time.begin(), VEC_task_time.end(),
+		[](std::shared_ptr<task> a, std::shared_ptr<task> b)
+		{
+			return a->time_needed > b->time_needed;
+		}
+	);
+
 	return true;
 }
 
-void show_tasks() noexcept(true)
+void show_tasks(std::vector<std::shared_ptr<task>> temp) noexcept(true)
 {
 
 	/************************** temporary code START *********************************/
-	for(int i = 0; i < VEC_task.size() && i < 10; i++)
+	for(int i = 0; i < temp.size() && i < 10; i++)
 	{
-		std::cout << VEC_task[i]->title << '\t'
-				  << VEC_task[i]->description << '\t'
-				  << VEC_task[i]->time_needed << '\t'
-				  << VEC_task[i]->priority << '\t'
-			  	  << VEC_task[i]->completed << '\n';	  
+		std::cout << temp[i]->title << '\t'
+				  << temp[i]->description << '\t'
+				  << temp[i]->time_needed << '\t'
+				  << temp[i]->priority << '\t'
+			  	  << temp[i]->completed << '\n';	  
 	}
 	/************************** temporary code END *********************************/
 }
@@ -122,7 +140,7 @@ void start() noexcept(true)
 	std::cout << "======================================================================================================\n";
 
 	if(load_tasks_into_containers()) // loads task objects into VEC_task, VEC_task_priority, VEC_task_time, UOMAP_global_keywords
-		show_tasks();
+		show_tasks(VEC_task_time);
 	else 
 		return;
 

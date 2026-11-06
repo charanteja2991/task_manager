@@ -31,33 +31,25 @@ task string_to_task_object(std::string &str)
 			switch(where)
 			{
 				case 0:
-				{
 					task_obj.title = chunk;
-				} break;
+				 	break;
 				case 1:
-				{
 					task_obj.description = chunk;
-				} break;
+				 	break;
 				case 2:
-				{
-					//task_obj.time_needed = static_cast<unsigned long>(std::stoi(chunk));
-				} break;
+					task_obj.time_needed = std::stoul(chunk);
+					break;
 				case 3:
-				{
-					//task_obj.priority = static_cast<unsigned long>(std::stoi(chunk));
-				} break;
+					task_obj.priority = std::stoul(chunk);
+					break;
 				case 4:
-				{
-					//task_obj.completed = static_cast<bool>(std::stoi(chunk));
-				} break;
+					task_obj.completed = std::stoi(chunk);
+					break;
 				case 5:
-				{
 					task_obj.keywords.insert(chunk);
-				} break;
+					break;
 				default:
-				{
 					std::cerr << "functions.cpp -> string_to_task_object() -> faulty variable 'where' values\n";
-				}
 			}
 
 			if(where != 5)
@@ -101,13 +93,13 @@ void show_tasks() noexcept(true)
 {
 
 	/************************** temporary code START *********************************/
-	for(auto t: VEC_task)
+	for(int i = 0; i < VEC_task.size() && i < 10; i++)
 	{
-		std::cout << t->title << '\t'
-				  << t->description << '\t'
-				  << t->time_needed << '\t'
-				  << t->priority << '\t'
-			  	  << t->completed << '\n';	  
+		std::cout << VEC_task[i]->title << '\t'
+				  << VEC_task[i]->description << '\t'
+				  << VEC_task[i]->time_needed << '\t'
+				  << VEC_task[i]->priority << '\t'
+			  	  << VEC_task[i]->completed << '\n';	  
 	}
 	/************************** temporary code END *********************************/
 }
@@ -118,7 +110,7 @@ inline std::string get_input() noexcept(true)
 
 	std::string input;
 
-	std::cout << ">> ";
+	std::cout << "\n>> ";
 	std::getline(std::cin, input);
 	return input;
 

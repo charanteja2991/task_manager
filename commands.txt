@@ -1,0 +1,12 @@
+############################# AVAILABLE COMMAND LINES ##################################
+
+new 			- Creates a new task
+listall			- Lists all the tasks from highest priority that may include completed and incompleted
+random			- Suggests a random task
+<time>			- General format is (3d6h32m). lists tasks below or equal to that time
+delete <task_title>	- Deletes task from database
+done <task_title>	- Marks task as done
+help 			- Displays all available commands 
+exit 			- Exits the program... duhh!!
+
+########################################################################################

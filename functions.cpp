@@ -160,6 +160,12 @@ inline std::string get_input() noexcept(true)
 	/************************** temporary code END *********************************/
 }
 
+bool save_tasks_into_file()
+{
+	std::ofstream tasks_file_writer("tasks.txt", std::ios::out);
+	return true;
+}
+
 void start() noexcept(true)
 {
 	if(load_tasks_into_containers()) // loads task objects into VEC_task, VEC_task_priority, VEC_task_time, UOMAP_global_keywords
@@ -187,11 +193,22 @@ void start() noexcept(true)
 	}
 	else if (input == "help")
 	{
+		std::ifstream help_text_reader("commands.txt");
+		std::string line;
 
+		if(help_text_reader.is_open())
+		{
+			while(std::getline(help_text_reader, line))
+			{
+				std::cout << line << '\n';
+			}	
+		}
 	}
 	else if (input == "exit")
 	{
-
+		std::cout << "Saving into file..." << '\n';
+	//	save_tasks_into_file();
+		return;
 	}
 
 	/************************** temporary code END *********************************/

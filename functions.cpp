@@ -10,7 +10,7 @@
 #include <thread>
 
 // this is where all the main tasks addresses are lived.
-std::vector<std::shared_ptr<task>> VEC_task; 
+std::vector<std::shared_ptr<task>> VEC_tasks; 
 
 // these sort pointers according to priority and time
 std::vector<std::shared_ptr<task>> 
@@ -22,6 +22,7 @@ std::unordered_map<std::string, std::vector<std::shared_ptr<task>>> UOMAP_global
 
 task string_to_task_object(std::string &str)
 {
+	//std::cerr << str << '\n';
 	task task_obj;
 	std::string chunk;
 	int where = 0;
@@ -86,10 +87,20 @@ bool load_tasks_into_containers() noexcept(true)
 	// string is broken down here and new TASK objects are created and pushed into containers
 	while(std::getline(tasks_file_reader, STR_line))
 	{
-		VEC_task.push_back(std::make_shared<task>(string_to_task_object(STR_line)));	
-		VEC_task_priority.push_back(VEC_task.back());
-		VEC_task_time.push_back(VEC_task.back());
+		// creating a temporary task object
+		task task_obj = string_to_task_object(STR_line);
+
+		VEC_tasks.push_back(std::make_shared<task>(task_obj)); // -------------------[]
+		VEC_task_priority.push_back(VEC_tasks.back()); // __________________________/
+		VEC_task_time.push_back(VEC_tasks.back()); // _____________________________/
+
+		// keywords to store in unordred map so that searching globally would be easy
+		for(auto &s: task_obj.keywords)
+		{
+			UOMAP_global_keywords[s].push_back(VEC_tasks.back());
+		}
 	}
+
 	
 	std::thread priority_sort_thread(
 		[]()
@@ -116,24 +127,24 @@ bool load_tasks_into_containers() noexcept(true)
 	);
 	
 	priority_sort_thread.join();
-	time_sort_thread.join();
+	time_sort_thread.join(); 
 	
 	return true;
 }
 
-void show_tasks(std::vector<std::shared_ptr<task>> temp) noexcept(true)
+void show_tasks(std::vector<std::shared_ptr<task>> temp, int iterate = 10) noexcept(true)
 {
-
+	std::cout << "======================================================================================================\n";
 	/************************** temporary code START *********************************/
-	for(int i = 0; i < temp.size() && i < 10; i++)
+	for(int i = 0; i < temp.size() && i < iterate; i++)
 	{
-		std::cout << temp[i]->title << '\t'
-				  << temp[i]->description << '\t'
-				  << temp[i]->time_needed << '\t'
-				  << temp[i]->priority << '\t'
-			  	  << temp[i]->completed << '\n';	  
+		std::cout << temp[i]->title << "    "
+				  << temp[i]->description << "    "
+				  << temp[i]->time_needed << "    "
+				  << temp[i]->priority << '\n';
 	}
 	/************************** temporary code END *********************************/
+	std::cout << "======================================================================================================\n";
 }
 
 inline std::string get_input() noexcept(true)
@@ -151,12 +162,12 @@ inline std::string get_input() noexcept(true)
 
 void start() noexcept(true)
 {
-	std::cout << "======================================================================================================\n";
-
 	if(load_tasks_into_containers()) // loads task objects into VEC_task, VEC_task_priority, VEC_task_time, UOMAP_global_keywords
 		show_tasks(VEC_task_priority);
-	else 
+	else {
+		std::cerr << "functions.cpp -> Couldn't load tasks into containers\n";
 		return;
+	}
 
 	/************************** temporary code START *********************************/
 
@@ -168,7 +179,7 @@ void start() noexcept(true)
 	}
 	else if (input == "listall")
 	{
-
+		show_tasks(VEC_task_priority, VEC_task_priority.size());
 	}
 	else if (input == "random")
 	{

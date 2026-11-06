@@ -1,5 +1,98 @@
-Learn Java|Learn java re nigga|120|5|0|java,learn,programming
-do homework|nigga|30|2|homework
-Learn Java|Learn java re nigga|120|1|0|java,learn,programming
-do homework|nigga|30|3|homework
-Learn Java|Learn java re nigga|120|4|0|java,learn,programming
+Study DSA|Master trees and graphs for interviews|180|5|0|dsa,interview,programming
+Code Review|Check team pull requests on GitHub|45|3|1|git,code-review,team
+Gym Workout|Leg day and cardio session|90|4|0|health,fitness,gym
+Read Book|Finish chapter 4 of Clean Code|60|3|0|reading,learning,clean-code
+Laundry|Wash and fold dark clothes|45|2|0|chores,home
+Meal Prep|Cook lunches for the work week|120|4|0|cooking,health,prep
+Check Email|Clear out inbox and flag urgent items|30|2|1|work,email
+Pay Rent|Transfer money to landlord|15|5|1|finance,bills
+Fix Bug #404|Resolve the null pointer exception in auth flow|120|5|0|java,debugging,work
+Water Plants|Water the balcony garden|15|1|1|chores,garden
+Meditation|15 minutes of mindfulness practice|15|2|0|health,mindfulness
+Call Mom|Weekly catch-up call|45|3|0|family,social
+Update Resume|Add recent project achievements|90|4|0|career,resume
+Backup Data|Run cloud backup for local drives|30|3|1|tech,security
+Car Wash|Clean the car inside and out|60|2|0|chores,car
+Write Blog|Draft article on C++ threads|120|3|0|writing,learning,cpp
+Learn SQL|Practice joins and subqueries on LeetCode|90|4|0|sql,database,learning
+Doctor Visit|Annual health checkup appointment|120|5|0|health,medical
+Barber Shop|Get a haircut|45|2|1|grooming,personal
+Plan Vacation|Book flights and hotel for weekend trip|90|3|0|travel,planning
+Clean Desk|Organize cables and wipe down monitors|20|2|1|chores,workspace
+LeetCode Daily|Solve today's medium problem|45|4|0|dsa,problem-solving
+Mend Clothes|Sew the button back onto the jacket|20|1|0|chores,diy
+Side Project|Implement frontend UI for weather app|180|3|0|programming,frontend,react
+Review Budget|Track expenses for the past month|40|4|1|finance,budget
+Walk Dog|Take the dog for a walk in the park|30|4|1|pets,health
+Learn Git|Study rebase and cherry-pick commands|60|3|0|git,vcs,learning
+Dentist|Quarterly teeth cleaning|60|4|0|health,medical
+Renew License|Submit online form for driver's license|45|5|0|admin,legal
+Refactor Code|Clean up legacy database module|150|4|0|programming,refactoring,java
+Vacuum House|Vacuum living room and bedroom rugs|40|2|0|chores,cleaning
+Learn Docker|Build a multi-stage Dockerfile|90|4|0|devops,docker,learning
+Iron Shirts|Iron 5 formal shirts for the week|30|2|0|chores,clothing
+Listen Podcast|Listen to latest tech podcast episode|60|2|1|learning,audio
+Sharpen Knives|Sharpen kitchen knives with whetstone|20|2|1|chores,kitchen
+Water Intake|Drink 3 liters of water today|5|4|0|health,hydration
+Stretch|Full body mobility stretching session|20|3|0|health,fitness
+Check Analytics|Review traffic traffic on portfolio website|30|2|1|marketing,tech
+Learn AWS|Study EC2 and S3 basics for cloud cert|120|4|0|aws,cloud,learning
+Organize Closet|Donate old clothes and sort winter gear|120|2|0|chores,home
+Write Journal|Reflect on the week's highs and lows|20|2|0|personal,writing
+Trash Day|Take out garbage and recycling bins|10|3|1|chores,home
+Study System Design|Learn horizontal vs vertical scaling|90|5|0|system-design,architecture
+Fix Bicycle|Replace the worn-out rear brake pads|60|3|0|diy,bike
+Learn Rust|Understand ownership and borrowing concepts|120|4|0|rust,programming
+Fill Fuel|Go to gas station and fill up tank|15|3|1|car,chores
+Update Software|Install latest OS patches and security updates|40|3|0|tech,maintenance
+Window Cleaning|Wash living room glass windows|60|1|0|chores,cleaning
+Learn Linux|Practice bash scripting loops|70|3|0|linux,bash,learning
+Design Logo|Sketch concept logos for new startup|120|3|0|design,creative
+Buy Gift|Get a birthday present for best friend|45|4|0|shopping,social
+Check Credit Score|Verify monthly report for discrepancies|15|3|1|finance,credit
+Learn Spring Boot|Set up REST API endpoints|120|5|0|java,springboot,backend
+Clean Fridge|Throw away expired food and wipe shelves|45|2|0|chores,kitchen
+Cook Dinner|Make homemade pasta from scratch|90|3|0|cooking,food
+Learn Regex|Master pattern matching strings|45|3|0|programming,regex
+Review Goals|Assess progress of quarterly milestones|60|4|0|personal,planning
+Water Filter|Replace the water pitcher filter cartridge|10|3|1|chores,home
+Learn HTML/CSS|Build a responsive landing page layout|120|3|0|frontend,web,learning
+Mop Floors|Mop kitchen and bathroom tiles|40|2|0|chores,cleaning
+Practice Piano|Learn the first verse of Moonlight Sonata|60|3|0|music,hobby
+Cancel Trial|Opt out of streaming service before billing|10|4|1|finance,admin
+Learn TypeScript|Convert a JavaScript file to TypeScript|90|4|0|javascript,typescript,web
+Sort Mail|Shred junk mail and file tax documents|30|3|1|admin,home
+Dust Shelves|Wipe down bookshelves and entertainment unit|30|2|0|chores,cleaning
+Tax Return|Gather W2 forms and file taxes online|180|5|0|finance,taxes
+Learn Python|Write a web scraper using BeautifulSoup|90|3|0|python,scraping,learning
+Change Sheets|Wash and replace bed linens|25|3|1|chores,home
+Deep Work Block|Uninterrupted coding on main project feature|180|5|0|work,programming
+Learn Markdown|Read guide on advanced markdown formatting|30|2|1|learning,docs
+Replace Bulb|Change broken lightbulb in hallway|10|1|1|chores,diy
+Learn GraphQL|Compare GraphQL queries with REST endpoints|90|4|0|api,graphql,learning
+Shoe Polish|Clean and shine leather boots|25|2|0|grooming,shoes
+Update Passwords|Change passwords using password manager|60|4|0|security,tech
+Learn Redis|Implement a basic caching layer|70|4|0|database,redis,backend
+Clean Microwave|Steam clean inside walls with lemon water|15|2|1|chores,kitchen
+Learn Unit Testing|Write JUnit test cases for service layer|90|4|0|java,testing,qa
+Post to LinkedIn|Share an update about project milestone|20|3|0|career,social
+Assemble Desk|Put together flat-pack office chair|45|3|0|diy,furniture
+Learn CI/CD|Set up a GitHub Actions workflow pipeline|100|4|0|devops,github,learning
+Defrost Freezer|Remove ice buildup from freezer unit|60|2|0|chores,kitchen
+Learn C#|Build a simple desktop app using WPF|120|3|0|csharp,dotnet,learning
+Weed Garden|Pull weeds out of front flower beds|45|2|0|chores,garden
+Learn Vim|Practice navigation shortcuts using vimtutor|40|3|0|tools,editors,vim
+Clean Keyboard|Remove keycaps and blow away dust debris|30|2|1|tech,maintenance
+Learn JSON|Parse complex nested configuration objects|30|3|1|json,programming
+Organize Photos|Sort digital camera photos into folders|120|2|0|personal,tech
+Learn Shell|Study standard output and input redirection|45|3|0|linux,bash,learning
+Clean Oven|Apply oven cleaner spray and wipe grime|60|1|0|chores,cleaning
+Learn JWT|Secure an application using token authentication|90|5|0|security,auth,learning
+Donate Items|Drop off box of old books at library|45|2|0|chores,charity
+Learn NoSQL|Model one-to-many relationships in MongoDB|90|4|0|database,mongodb
+Clean Mirrors|Wipe bathroom and bedroom mirrors streak-free|15|2|1|chores,cleaning
+Learn Microservices|Study service discovery and API gateways|120|4|0|architecture,backend
+Water Lawn|Run lawn sprinklers for thirty minutes|30|2|1|chores,garden
+Learn HTTP|Study difference between HTTP/1.1 and HTTP/2|45|3|0|networking,web
+Sew Hem|Fix loose hem stitch on dress pants|30|1|0|diy,clothing
+Learn Go|Write a concurrent program using goroutines|90|4|0|golang,programming

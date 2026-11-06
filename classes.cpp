@@ -23,11 +23,3 @@ struct task
         title(tit), description(desc), time_needed(tm_needed), priority(pri), completed(isdone) {}
     
 };
-
-template <typename data_type1, typename data_type2, typename data_type3>
-struct triplet
-{
-    data_type1 first;
-    data_type2 second;
-    data_type3 third;
-};

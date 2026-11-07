@@ -147,17 +147,45 @@ void show_tasks(std::vector<std::shared_ptr<task>> temp, int iterate = 10) noexc
 	std::cout << "======================================================================================================\n";
 }
 
-inline std::string get_input() noexcept(true)
+std::vector<std::string> get_input() noexcept(true)
 {
-	/************************** temporary code START *********************************/
-
-	std::string input;
-
+	std::string input, chunk;
 	std::cout << "\n>> ";
 	std::getline(std::cin, input);
-	return input;
 
-	/************************** temporary code END *********************************/
+	std::vector<std::string> tokens;
+	bool inside_cotations = false;
+
+	for(char &c: input)
+	{
+		if(c == '"' && !inside_cotations)
+		{
+			inside_cotations = true;
+		}
+		else if(c == '"' && inside_cotations && !chunk.empty())
+		{
+			inside_cotations = false;
+			tokens.push_back(chunk);
+			chunk.clear();
+		}
+		else if(c == ' ' && !inside_cotations && !chunk.empty())
+		{
+			tokens.push_back(chunk);
+			chunk.clear();
+		}
+		else
+		{
+			if(c != ' ')
+				chunk += c;
+		}
+	}
+	if(!chunk.empty())
+		tokens.push_back(chunk);
+
+	for(auto s: tokens)
+		std::cout << s << "\n";
+
+	return tokens;
 }
 
 bool save_tasks_into_file()
@@ -171,13 +199,13 @@ void start() noexcept(true)
 	if(load_tasks_into_containers()) // loads task objects into VEC_task, VEC_task_priority, VEC_task_time, UOMAP_global_keywords
 		show_tasks(VEC_task_priority);
 	else {
-		std::cerr << "functions.cpp -> Couldn't load tasks into containers\n";
+		std::cerr << "functions.cpp -> start() -> Couldn't load tasks into containers\n";
 		return;
 	}
 
-	/************************** temporary code START *********************************/
+	std::vector<std::string> tokens = get_input();
 
-	std::string input = get_input(); 
+	/************************** temporary code START *********************************
 
 	if (input == "new")
 	{

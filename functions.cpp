@@ -8,6 +8,7 @@
 #include <memory>
 #include <algorithm>
 #include <thread>
+#include <utility>
 
 // this is where all the main tasks addresses are lived.
 std::vector<std::shared_ptr<task>> VEC_tasks; 
@@ -165,11 +166,14 @@ std::vector<std::string> get_input() noexcept(true)
 		}
 
 		// condition: "this is a test string -->["]
-		else if(c == '"' && inside_cotations && !chunk.empty())
+		else if(c == '"' && inside_cotations)
 		{
 			inside_cotations = false;
-			tokens.push_back(chunk);
-			chunk.clear();
+			if(!chunk.empty())
+			{
+				tokens.push_back(chunk);
+				chunk.clear();
+			}
 		}
 
 		// condition: this[]<--is a test "string"
@@ -180,15 +184,12 @@ std::vector<std::string> get_input() noexcept(true)
 		}
 		else
 		{
-			if(c != ' ' && !inside_cotations)
+			if(c != '"')
 				chunk += c;
 		}
 	}
 	if(!chunk.empty())
 		tokens.push_back(chunk);
-
-	for(auto s: tokens)
-		std::cout << s << "\n";
 
 	return tokens;
 }
@@ -199,50 +200,86 @@ bool save_tasks_into_file()
 	return true;
 }
 
+void create_new_task(const std::vector<std::string> &tokens)
+{
+	task new_task;
+	std::string time;
+
+	std::cout << "Task Title: ";
+	std::getline(std::cin, new_task.title);
+
+	std::cout << "Task Description: ";
+	std::getline(std::cin, new_task.description);
+
+	std::cout << "Time needed to complete this task(XdXhXm): ";
+	std::cin >> time;
+
+	std::cout << "Priority of this task compared to other tasks: ";
+	std::cin >> new_task.priority;
+
+	// to clear the \n residing in the buffer...
+	std::cin.ignore();
+	std::cout << "Succesfully added Task into database\n";
+}
+
 void start() noexcept(true)
 {
-	if(load_tasks_into_containers()) // loads task objects into VEC_task, VEC_task_priority, VEC_task_time, UOMAP_global_keywords
+	// loads task objects into VEC_task, VEC_task_priority, VEC_task_time, UOMAP_global_keywords
+	if(load_tasks_into_containers())
 		show_tasks(VEC_task_priority);
-	else {
+	else 
+	{
 		std::cerr << "functions.cpp -> start() -> Couldn't load tasks into containers\n";
 		return;
 	}
 
-	std::vector<std::string> tokens = get_input();
-
-	/************************** temporary code START *********************************
-
-	if (input == "new")
+	while(true)
 	{
-		std::cout << "test";		
-	}
-	else if (input == "listall")
-	{
-		show_tasks(VEC_task_priority, VEC_task_priority.size());
-	}
-	else if (input == "random")
-	{
+		std::vector<std::string> tokens = get_input();
 
-	}
-	else if (input == "help")
-	{
-		std::ifstream help_text_reader("commands.txt");
-		std::string line;
-
-		if(help_text_reader.is_open())
+		try
 		{
-			while(std::getline(help_text_reader, line))
+			if(tokens.at(0) == "new")
 			{
-				std::cout << line << '\n';
-			}	
+				create_new_task(tokens);
+			}
+			else if (tokens.at(0) == "listall")
+			{
+				// shows tasks through priority till its end (thats why VEC_task_priority.size() is given)
+				// else only 10 tasks will be printed
+				show_tasks(VEC_task_priority, VEC_task_priority.size());
+			}
+			else if (tokens.at(0) == "random")
+			{
+
+			}
+			else if (tokens.at(0) == "help")
+			{
+				std::ifstream help_text_reader("commands.txt");
+				std::string line;
+
+				if(help_text_reader.is_open())
+				{
+					while(std::getline(help_text_reader, line))
+					{
+						std::cout << line << '\n';
+					}	
+				}
+			}
+			else if (tokens.at(0) == "exit")
+			{
+				std::cout << "Saving into file..." << '\n';
+			//	save_tasks_into_file();
+				return;
+			}
+			else
+			{
+				std::cerr << "Unknown command: " << tokens[0] << '\n';
+			}
+		}
+		catch(...)
+		{
+			
 		}
 	}
-	else if (input == "exit")
-	{
-		std::cout << "Saving into file..." << '\n';
-	//	save_tasks_into_file();
-		return;
-	}
-
-	/************************** temporary code END *********************************/
 }

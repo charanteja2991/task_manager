@@ -158,16 +158,21 @@ std::vector<std::string> get_input() noexcept(true)
 
 	for(char &c: input)
 	{
+		// condition: ["]<-- this is a test string"
 		if(c == '"' && !inside_cotations)
 		{
 			inside_cotations = true;
 		}
+
+		// condition: "this is a test string -->["]
 		else if(c == '"' && inside_cotations && !chunk.empty())
 		{
 			inside_cotations = false;
 			tokens.push_back(chunk);
 			chunk.clear();
 		}
+
+		// condition: this[]<--is a test "string"
 		else if(c == ' ' && !inside_cotations && !chunk.empty())
 		{
 			tokens.push_back(chunk);
@@ -175,7 +180,7 @@ std::vector<std::string> get_input() noexcept(true)
 		}
 		else
 		{
-			if(c != ' ')
+			if(c != ' ' && !inside_cotations)
 				chunk += c;
 		}
 	}

@@ -184,6 +184,7 @@ std::vector<std::string> get_input() noexcept(true)
 		}
 		else
 		{
+			// why this condition?
 			if(c != '"')
 				chunk += c;
 		}
@@ -200,10 +201,39 @@ bool save_tasks_into_file()
 	return true;
 }
 
+bool is_valid_time_string(std::string time)
+{
+	bool day = false, hour = false, minute = false;
+	
+	for(char &c: time)
+	{
+
+	}
+
+	return true;
+}
+
+unsigned long input_parse_time()
+{
+	std::string input, chunk;
+	std::getline(std::cin, input);
+	unsigned long time = 0;
+
+	if(!is_valid_time_string(input))
+	{
+		throw invalid_time_input("Invalid time\n");
+	}
+
+
+	
+	return time;
+}
+
 void create_new_task(const std::vector<std::string> &tokens)
 {
 	task new_task;
-	std::string time;
+
+	/****************************************************** 
 
 	std::cout << "Task Title: ";
 	std::getline(std::cin, new_task.title);
@@ -212,7 +242,7 @@ void create_new_task(const std::vector<std::string> &tokens)
 	std::getline(std::cin, new_task.description);
 
 	std::cout << "Time needed to complete this task(XdXhXm): ";
-	std::cin >> time;
+	new_task.time_needed = input_parse_time();
 
 	std::cout << "Priority of this task compared to other tasks: ";
 	std::cin >> new_task.priority;
@@ -220,6 +250,35 @@ void create_new_task(const std::vector<std::string> &tokens)
 	// to clear the \n residing in the buffer...
 	std::cin.ignore();
 	std::cout << "Succesfully added Task into database\n";
+
+	************************************************************/
+
+	try
+	{
+		std::cout << "Task Title: ";
+		std::getline(std::cin, new_task.title);
+
+		std::cout << "Task Description: ";
+		std::getline(std::cin, new_task.description);
+
+		std::cout << "Time needed to complete this task(XdXhXm): ";
+		new_task.time_needed = input_parse_time();
+
+		std::cout << "Priority of this task compared to other tasks: ";
+		std::cin >> new_task.priority;
+
+		// to clear the \n residing in the buffer...
+		std::cin.ignore();
+		std::cout << "Succesfully added Task into database\n";
+	}
+	catch(exception &excep)
+	{
+		excep.what();
+	}
+	catch(...)
+	{
+		std::cerr << "functions.cpp -> create_new_task() -> standard error probably...\n";
+	}
 }
 
 void start() noexcept(true)
@@ -283,3 +342,9 @@ void start() noexcept(true)
 		}
 	}
 }
+
+/*int main()
+{
+	start();
+}
+*/

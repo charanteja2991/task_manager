@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <thread>
 #include <utility>
+#include <set>
 
 // this is where all the main tasks addresses are lived.
 std::vector<std::shared_ptr<task>> VEC_tasks; 
@@ -18,8 +19,40 @@ std::vector<std::shared_ptr<task>>
 	VEC_task_priority,
 	VEC_task_time;
 
+/*******************************************************************************/
+auto nig1 = [](std::shared_ptr<task> &a, std::shared_ptr<task> &b)
+			{
+				return a->priority > b->priority;
+			};
+
+auto nig2 = [](std::shared_ptr<task> &a, std::shared_ptr<task> &b)
+			{
+				return a->time_needed > b->time_needed;
+			};
+
+
+// this inserts tasks that are in higher PRIORITY 
+std::multiset<std::shared_ptr<task>, decltype(nig1)> MSET_task_priority;
+
+// this inserts tasks that are in higher TIME NEEDED
+std::multiset<std::shared_ptr<task>, decltype(nig2)> MSET_task_time;
+
+/*******************************************************************************/
+
+
+
 // hash map for string->tasks that makes searching easy through keywords
 std::unordered_map<std::string, std::vector<std::shared_ptr<task>>> UOMAP_global_keywords;
+
+
+
+
+
+
+
+
+
+
 
 task string_to_task_object(std::string &str)
 {
@@ -70,6 +103,15 @@ task string_to_task_object(std::string &str)
 
 	return task_obj;	
 }
+
+
+
+
+
+
+
+
+
 
 bool load_tasks_into_containers() noexcept(true)
 {
@@ -133,6 +175,15 @@ bool load_tasks_into_containers() noexcept(true)
 	return true;
 }
 
+
+
+
+
+
+
+
+
+
 void show_tasks(std::vector<std::shared_ptr<task>> temp, int iterate = 10) noexcept(true)
 {
 	std::cout << "======================================================================================================\n";
@@ -147,6 +198,15 @@ void show_tasks(std::vector<std::shared_ptr<task>> temp, int iterate = 10) noexc
 	/************************** temporary code END *********************************/
 	std::cout << "======================================================================================================\n";
 }
+
+
+
+
+
+
+
+
+
 
 std::vector<std::string> get_input() noexcept(true)
 {
@@ -195,11 +255,29 @@ std::vector<std::string> get_input() noexcept(true)
 	return tokens;
 }
 
+
+
+
+
+
+
+
+
+
 bool save_tasks_into_file()
 {
 	std::ofstream tasks_file_writer("tasks.txt", std::ios::out);
 	return true;
 }
+
+
+
+
+
+
+
+
+
 
 bool is_valid_time_string(std::string time)
 {
@@ -212,6 +290,15 @@ bool is_valid_time_string(std::string time)
 
 	return true;
 }
+
+
+
+
+
+
+
+
+
 
 unsigned long input_parse_time()
 {
@@ -228,6 +315,15 @@ unsigned long input_parse_time()
 	
 	return time;
 }
+
+
+
+
+
+
+
+
+
 
 void create_new_task(const std::vector<std::string> &tokens)
 {
@@ -280,6 +376,16 @@ void create_new_task(const std::vector<std::string> &tokens)
 		std::cerr << "functions.cpp -> create_new_task() -> standard error probably...\n";
 	}
 }
+
+
+
+
+
+
+
+
+
+
 
 void start() noexcept(true)
 {
@@ -342,9 +448,3 @@ void start() noexcept(true)
 		}
 	}
 }
-
-/*int main()
-{
-	start();
-}
-*/

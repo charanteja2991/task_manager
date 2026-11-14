@@ -9,7 +9,6 @@
 #include <algorithm>
 #include <thread>
 #include <utility>
-#include <set>
 
 // this is where all the main tasks addresses are lived.
 std::vector<std::shared_ptr<task>> VEC_tasks; 
@@ -19,31 +18,8 @@ std::vector<std::shared_ptr<task>>
 	VEC_task_priority,
 	VEC_task_time;
 
-/*******************************************************************************/
-auto nig1 = [](std::shared_ptr<task> &a, std::shared_ptr<task> &b)
-			{
-				return a->priority > b->priority;
-			};
-
-auto nig2 = [](std::shared_ptr<task> &a, std::shared_ptr<task> &b)
-			{
-				return a->time_needed > b->time_needed;
-			};
-
-
-// this inserts tasks that are in higher PRIORITY 
-std::multiset<std::shared_ptr<task>, decltype(nig1)> MSET_task_priority;
-
-// this inserts tasks that are in higher TIME NEEDED
-std::multiset<std::shared_ptr<task>, decltype(nig2)> MSET_task_time;
-
-/*******************************************************************************/
-
-
-
-// hash map for string->tasks that makes searching easy through keywords
+// hash map for string : *tasks that makes searching easy through keywords
 std::unordered_map<std::string, std::vector<std::shared_ptr<task>>> UOMAP_global_keywords;
-
 
 
 
@@ -56,7 +32,6 @@ std::unordered_map<std::string, std::vector<std::shared_ptr<task>>> UOMAP_global
 
 task string_to_task_object(std::string &str)
 {
-	//std::cerr << str << '\n';
 	task task_obj;
 	std::string chunk;
 	int where = 0;
@@ -135,7 +110,8 @@ bool load_tasks_into_containers() noexcept(true)
 
 		VEC_tasks.push_back(std::make_shared<task>(task_obj)); // -------------------[]
 		VEC_task_priority.push_back(VEC_tasks.back()); // __________________________/
-		VEC_task_time.push_back(VEC_tasks.back()); // _____________________________/
+        VEC_task_time.push_back(VEC_tasks.back()); // _____________________________/
+			
 
 		// keywords to store in unordred map so that searching globally would be easy
 		for(auto &s: task_obj.keywords)
@@ -144,7 +120,6 @@ bool load_tasks_into_containers() noexcept(true)
 		}
 	}
 
-	
 	std::thread priority_sort_thread(
 		[]()
 		{
@@ -171,6 +146,7 @@ bool load_tasks_into_containers() noexcept(true)
 	
 	priority_sort_thread.join();
 	time_sort_thread.join(); 
+
 	
 	return true;
 }
@@ -187,7 +163,7 @@ bool load_tasks_into_containers() noexcept(true)
 void show_tasks(std::vector<std::shared_ptr<task>> temp, int iterate = 10) noexcept(true)
 {
 	std::cout << "======================================================================================================\n";
-	/************************** temporary code START *********************************/
+	/************************** temporary code START ********************************/
 	for(int i = 0; i < temp.size() && i < iterate; i++)
 	{
 		std::cout << temp[i]->title << "    "
@@ -195,7 +171,7 @@ void show_tasks(std::vector<std::shared_ptr<task>> temp, int iterate = 10) noexc
 				  << temp[i]->time_needed << "    "
 				  << temp[i]->priority << '\n';
 	}
-	/************************** temporary code END *********************************/
+	/************************** temporary code END ********************************/
 	std::cout << "======================================================================================================\n";
 }
 
@@ -386,12 +362,13 @@ void create_new_task(const std::vector<std::string> &tokens)
 
 
 
-
 void start() noexcept(true)
 {
 	// loads task objects into VEC_task, VEC_task_priority, VEC_task_time, UOMAP_global_keywords
 	if(load_tasks_into_containers())
-		show_tasks(VEC_task_priority);
+    {
+        show_tasks(VEC_task_time);
+    }
 	else 
 	{
 		std::cerr << "functions.cpp -> start() -> Couldn't load tasks into containers\n";

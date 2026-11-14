@@ -55,11 +55,11 @@ public:
 
 
 
-class invalid_time_hour_input: public exception 
+class invalid_time_hour_input: public invalid_time_input
 {
 public:
-    invalid_time_hour_input(): exception("classes.cpp -> invalid_time_hour_input") {}
-    invalid_time_hour_input(const std::string &msg) : exception(msg) {}
+    invalid_time_hour_input():invalid_time_input("classes.cpp -> invalid_time_hour_input") {}
+    invalid_time_hour_input(const std::string &msg) : invalid_time_input(msg) {}
 };
 
 
@@ -67,11 +67,11 @@ public:
 
 
 
-class invalid_time_day_input: public exception 
+class invalid_time_day_input: public invalid_time_input
 {
 public:
-    invalid_time_day_input(): exception("classes.cpp -> invalid_time_day_input") {}
-    invalid_time_day_input(const std::string &msg) : exception(msg) {}
+    invalid_time_day_input(): invalid_time_input("classes.cpp -> invalid_time_day_input") {}
+    invalid_time_day_input(const std::string &msg) : invalid_time_input(msg) {}
 };
 
 
@@ -79,9 +79,9 @@ public:
 
 
 
-class invalid_time_minute_input: public exception 
+class invalid_time_minute_input: public invalid_time_input 
 {
 public:
-    invalid_time_minute_input(): exception("classes.cpp -> invalid_time_minute_input") {}
-    invalid_time_minute_input(const std::string &msg) : exception(msg) {}
+    invalid_time_minute_input(): invalid_time_input("classes.cpp -> invalid_time_minute_input") {}
+    invalid_time_minute_input(const std::string &msg) : invalid_time_input(msg) {}
 };

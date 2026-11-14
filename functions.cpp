@@ -255,11 +255,14 @@ bool save_tasks_into_file()
 
 
 
-bool is_valid_time_string(std::string time)
+unsigned long input_parse_time()
 {
-	bool day = false, hour = false, minute = false;
-    unsigned long number = 0;
-	
+	std::string time, chunk;
+	std::getline(std::cin, time);
+	unsigned long UL_time = 0, number = 0;
+    bool minute = false, hour = false, day = false;
+
+
 	for(char &c: time)
 	{
         if(!(c >= '0' && c <= '9'))
@@ -274,10 +277,13 @@ bool is_valid_time_string(std::string time)
                     if(!hour && !minute && !day) // !minute && !hour is to avoid 12m15h kind... 
                     {
                        day = true;
+                       UL_time += (number * 24 * 60);
                        number = 0;
                     }
                     else
-                        throw invalid_time_day_input("Invalid Day format\n");
+                    {
+                        throw invalid_time_day_input("Invalid Time format\n");
+                    }
                 } break;
                 case 'h': case 'H':
                 {
@@ -285,15 +291,23 @@ bool is_valid_time_string(std::string time)
                     // this is so that only one time these letters are encountered.
                     // malli encounter aithe we return false
                     if(!minute && !hour) // !minute is to avoid 12m15h kind... 
+                    {
                         hour = true;
+                    }
                     else
-                        return false;
-
+                    {
+                        throw invalid_time_day_input("Invalid Time format\n");
+                    }
                     // to avoid 12d12345d....
                     if(day && number > 24)
+                    {
                         throw invalid_time_hour_input("Invalid Hour format\n");
+                    }
                     else
+                    {
+                        UL_time += (number * 60);
                         number = 0;
+                    }
                 } break;
                 case 'm': case 'M':
                 {   
@@ -301,20 +315,29 @@ bool is_valid_time_string(std::string time)
                     // this is so that only one time these letters are encountered.
                     // malli encounter aithe we return false
                     if(!minute)
+                    {
                         minute = true;
+                    }
                     else
-                        return false;
+                    {
+                        throw invalid_time_input("Invalid Time format\n");
+                    }
 
                     // to avoid 12d24h12342342m
                     if((day || hour) && number > 60)
+                    {
                         throw invalid_time_minute_input("Invalid Minute format\n");
+                    }
                     else
+                    {
+                        UL_time += number;
                         number = 0;
+                    }
                 } break;
                 // okavela other than d, m, h letters osthe we return this as false string.
                 default:
                 {
-                    return false;
+                    throw invalid_time_input("Invalid Time format\n");
                 }
             } // switch end
         } // if end
@@ -322,35 +345,24 @@ bool is_valid_time_string(std::string time)
         {
             number *= 10;
             number += (c - '0');
-        }
+
+            // to avoid 12d24h12342342 where minute doesnt have 'm' at the end
+            if((day || hour) && number > 60)
+                throw invalid_time_minute_input("Invalid Minute format\n");
+        } // else end
 	} // range based for loop end
-
-	return true;
-}
-
-
-
-
-
-
-
-
-
-
-unsigned long input_parse_time()
-{
-	std::string input, chunk;
-	std::getline(std::cin, input);
-	unsigned long time = 0;
-
-	if(!is_valid_time_string(input))
-	{
-		throw invalid_time_input("Invalid time\n");
-	}
-
     
-	
-	return time;
+    /********************** check for 17374 and 12d15h12 kind of inputs... *********************************/ 
+
+    // for strings like 1234, 12d15h12m, minute variable doesnt get envoked, so it stays on false... we modify the string based on that now...
+    if(!minute && number > 0)
+    {
+        (day == true || hour == true) ? 
+            UL_time += number : // this is for 12d15h12, last m got missed, for that cases, this line is needed
+            UL_time = number; // this is for 1234, only numbers that are taken in as minutes
+    }
+
+	return UL_time;
 }
 
 
@@ -396,6 +408,7 @@ void create_new_task(const std::vector<std::string> &tokens)
 
 		std::cout << "Time needed to complete this task(XdXhXm): ";
 		new_task.time_needed = input_parse_time();
+        std::cout << new_task.time_needed;
 
 		std::cout << "Priority of this task compared to other tasks: ";
 		std::cin >> new_task.priority;

@@ -25,6 +25,10 @@ struct task
     
 };
 
+
+
+
+
 class exception
 {
     const std::string message;
@@ -34,9 +38,50 @@ public:
     void what() { std::cerr << message << '\n'; }
 };
 
+
+
+
+
+
 class invalid_time_input : public exception
 {
 public:
     invalid_time_input() : exception("classes.cpp -> invalid_time_input") {}
     invalid_time_input(const std::string &msg) : exception(msg) {}
+};
+
+
+
+
+
+
+class invalid_time_hour_input: public exception 
+{
+public:
+    invalid_time_hour_input(): exception("classes.cpp -> invalid_time_hour_input") {}
+    invalid_time_hour_input(const std::string &msg) : exception(msg) {}
+};
+
+
+
+
+
+
+class invalid_time_day_input: public exception 
+{
+public:
+    invalid_time_day_input(): exception("classes.cpp -> invalid_time_day_input") {}
+    invalid_time_day_input(const std::string &msg) : exception(msg) {}
+};
+
+
+
+
+
+
+class invalid_time_minute_input: public exception 
+{
+public:
+    invalid_time_minute_input(): exception("classes.cpp -> invalid_time_minute_input") {}
+    invalid_time_minute_input(const std::string &msg) : exception(msg) {}
 };

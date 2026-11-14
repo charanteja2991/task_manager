@@ -277,7 +277,7 @@ bool is_valid_time_string(std::string time)
                        number = 0;
                     }
                     else
-                      return false; 
+                        throw invalid_time_day_input("Invalid Day format\n");
                 } break;
                 case 'h': case 'H':
                 {
@@ -291,7 +291,7 @@ bool is_valid_time_string(std::string time)
 
                     // to avoid 12d12345d....
                     if(day && number > 24)
-                        return false;
+                        throw invalid_time_hour_input("Invalid Hour format\n");
                     else
                         number = 0;
                 } break;
@@ -307,7 +307,7 @@ bool is_valid_time_string(std::string time)
 
                     // to avoid 12d24h12342342m
                     if((day || hour) && number > 60)
-                        return false;
+                        throw invalid_time_minute_input("Invalid Minute format\n");
                     else
                         number = 0;
                 } break;
@@ -348,7 +348,7 @@ unsigned long input_parse_time()
 		throw invalid_time_input("Invalid time\n");
 	}
 
-
+    
 	
 	return time;
 }

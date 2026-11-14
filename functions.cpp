@@ -258,11 +258,72 @@ bool save_tasks_into_file()
 bool is_valid_time_string(std::string time)
 {
 	bool day = false, hour = false, minute = false;
+    unsigned long number = 0;
 	
 	for(char &c: time)
 	{
+        if(!(c >= '0' && c <= '9'))
+        {
+            switch(c)
+            {
+                case 'd': case 'D':
+                {
+                    // okavela hour, minute, day false unte, we make day true
+                    // this is so that only one time these letters are encountered.
+                    // malli encounter aithe we return false
+                    if(!hour && !minute && !day) // !minute && !hour is to avoid 12m15h kind... 
+                    {
+                       day = true;
+                       number = 0;
+                    }
+                    else
+                      return false; 
+                } break;
+                case 'h': case 'H':
+                {
+                    // okavela hour, minute, day false unte, we make day true
+                    // this is so that only one time these letters are encountered.
+                    // malli encounter aithe we return false
+                    if(!minute && !hour) // !minute is to avoid 12m15h kind... 
+                        hour = true;
+                    else
+                        return false;
 
-	}
+                    // to avoid 12d12345d....
+                    if(day && number > 24)
+                        return false;
+                    else
+                        number = 0;
+                } break;
+                case 'm': case 'M':
+                {   
+                    // okavela hour, minute, day false unte, we make day true
+                    // this is so that only one time these letters are encountered.
+                    // malli encounter aithe we return false
+                    if(!minute)
+                        minute = true;
+                    else
+                        return false;
+
+                    // to avoid 12d24h12342342m
+                    if((day || hour) && number > 60)
+                        return false;
+                    else
+                        number = 0;
+                } break;
+                // okavela other than d, m, h letters osthe we return this as false string.
+                default:
+                {
+                    return false;
+                }
+            } // switch end
+        } // if end
+        else
+        {
+            number *= 10;
+            number += (c - '0');
+        }
+	} // range based for loop end
 
 	return true;
 }

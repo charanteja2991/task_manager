@@ -123,11 +123,11 @@ bool load_tasks_into_containers() noexcept(true)
 	std::thread priority_sort_thread(
 		[]()
 		{
-			std::sort(VEC_task_priority.begin(), VEC_task_priority.end(),
-				[](std::shared_ptr<task> &a, std::shared_ptr<task> &b)
+			std::sort(VEC_task_priority.begin(), VEC_task_priority.end()
+        		/*[](std::shared_ptr<task> &a, std::shared_ptr<task> &b) temporarily disabled this
 				{
 					return a->priority > b->priority;
-				}
+				}*/
 			);
 		}
 	);
@@ -135,11 +135,11 @@ bool load_tasks_into_containers() noexcept(true)
 	std::thread time_sort_thread(
 		[]()
 		{
-			std::sort(VEC_task_time.begin(), VEC_task_time.end(),
-				[](std::shared_ptr<task> &a, std::shared_ptr<task> &b)
+			std::sort(VEC_task_time.begin(), VEC_task_time.end()
+				/*[](std::shared_ptr<task> &a, std::shared_ptr<task> &b) temporarily disabled this
 				{
 					return a->time_needed > b->time_needed;
-				}
+				}*/
 			);
 		}
 	);
@@ -373,6 +373,76 @@ unsigned long input_parse_time()
 
 
 
+void add_task_to_containers(task new_task)
+{
+    // this pushes into main vector, that is VEC_tasks....
+    VEC_tasks.push_back(std::make_shared<task>(new_task));
+
+    auto insert_task = [](std::vector<std::shared_ptr<task>> &container, const char arg) mutable
+    {
+        size_t startindex = 0, endindex = container.size()-1, midindex;
+
+        if(arg == 'p' || arg == 'P')
+        {
+            while(startindex <= endindex)
+            {
+                midindex = startindex + (endindex - startindex) / 2;
+
+                if(container[midindex]->priority > VEC_tasks.back()->priority)
+                {
+                    endindex = midindex - 1;
+                }
+                else if(container[midindex]->priority < VEC_tasks.back()->priority)
+                {
+                    startindex = midindex + 1;
+                }
+                else if(container[midindex]->priority == VEC_tasks.back()->priority || startindex == endindex)
+                {
+                    container.insert(container.begin() + midindex, VEC_tasks.back());
+                    break;
+                }
+            }
+        }
+        else if(arg == 't' || arg == 'T')
+        {
+            while(startindex <= endindex)
+            {
+                midindex = startindex + (endindex - startindex) / 2;
+
+                if(container[midindex]->time_needed > VEC_tasks.back()->time_needed)
+                {
+                    endindex = midindex - 1;
+                }
+                else if(container[midindex]->time_needed < VEC_tasks.back()->time_needed)
+                {
+                    startindex = midindex + 1;
+                }
+                else if(container[midindex]->time_needed == VEC_tasks.back()->time_needed || startindex == endindex)
+                {
+                    container.insert(container.begin() + midindex, VEC_tasks.back());
+                    break;
+                }
+            }
+        }
+    };
+
+    
+
+    std::thread priority_insert_thread(insert_task, std::ref(VEC_task_priority), 'p');
+    std::thread time_insert_thread(insert_task, std::ref(VEC_task_time), 't');
+
+    priority_insert_thread.join();
+    time_insert_thread.join();
+}
+
+
+
+
+
+
+
+
+
 
 void create_new_task(const std::vector<std::string> &tokens)
 {
@@ -408,13 +478,24 @@ void create_new_task(const std::vector<std::string> &tokens)
 
 		std::cout << "Time needed to complete this task(XdXhXm): ";
 		new_task.time_needed = input_parse_time();
-        std::cout << new_task.time_needed;
 
 		std::cout << "Priority of this task compared to other tasks: ";
 		std::cin >> new_task.priority;
 
 		// to clear the \n residing in the buffer...
 		std::cin.ignore();
+
+        VEC_tasks.push_back(std::make_shared<task>(new_task));
+
+        try
+        {
+            add_task_to_containers(new_task);
+        }
+        catch(...)
+        {
+            std::cerr << "Standard Exception: in function.cpp -> create_new_task()\n";
+        }
+        
 		std::cout << "Succesfully added Task into database\n";
 	}
 	catch(exception &excep)

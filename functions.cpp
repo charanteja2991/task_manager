@@ -353,7 +353,7 @@ unsigned long input_parse_time()
 	} // range based for loop end
     
     /********************** check for 17374 and 12d15h12 kind of inputs... *********************************/ 
-
+    // PROBLEM: will this work for 12345m ?
     // for strings like 1234, 12d15h12m, minute variable doesnt get envoked, so it stays on false... we modify the string based on that now...
     if(!minute && number > 0)
     {

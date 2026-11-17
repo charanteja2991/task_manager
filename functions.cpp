@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <sys/types.h>
 #include <vector>
 #include <unordered_map>
 #include <memory>
@@ -384,6 +385,7 @@ void add_task_to_containers(task new_task)
 
         if(arg == 'p' || arg == 'P')
         {
+            // this loops locates where should the object be inserted...
             while(startindex <= endindex)
             {
                 midindex = startindex + (endindex - startindex) / 2;
@@ -397,10 +399,12 @@ void add_task_to_containers(task new_task)
                     startindex = midindex + 1;
                 }
             }
+
 			container.insert(container.begin() + midindex, VEC_tasks.back());
         }
         else if(arg == 't' || arg == 'T')
         {
+            // this loops locates where should the object be inserted...
             while(startindex <= endindex)
             {
                 midindex = startindex + (endindex - startindex) / 2;
@@ -414,6 +418,7 @@ void add_task_to_containers(task new_task)
                     startindex = midindex + 1;
 				}
             }
+
 			container.insert(container.begin() + midindex, VEC_tasks.back());
         }
     };
@@ -435,30 +440,41 @@ void add_task_to_containers(task new_task)
 
 
 
+std::unordered_set<std::string> input_parse_keywords()
+{
+    std::unordered_set<std::string> keywords;
+    std::string user_input, chunk;
+    std::getline(std::cin, user_input);
+
+    for(const char &c: user_input)
+    {
+        if(c == 32)
+        {
+            keywords.insert(chunk);
+            chunk.clear();
+        }
+        else
+        {
+            chunk += c;
+        }
+    }
+    keywords.insert(chunk);
+
+    return keywords;
+}
+
+
+
+
+
+
+
+
+
 
 void create_new_task(const std::vector<std::string> &tokens)
 {
-	task new_task;
-
-	/****************************************************** 
-
-	std::cout << "Task Title: ";
-	std::getline(std::cin, new_task.title);
-
-	std::cout << "Task Description: ";
-	std::getline(std::cin, new_task.description);
-
-	std::cout << "Time needed to complete this task(XdXhXm): ";
-	new_task.time_needed = input_parse_time();
-
-	std::cout << "Priority of this task compared to other tasks: ";
-	std::cin >> new_task.priority;
-
-	// to clear the \n residing in the buffer...
-	std::cin.ignore();
-	std::cout << "Succesfully added Task into database\n";
-
-	************************************************************/
+    task new_task;
 
 	try
 	{
@@ -473,6 +489,10 @@ void create_new_task(const std::vector<std::string> &tokens)
 
 		std::cout << "Priority of this task compared to other tasks: ";
 		std::cin >> new_task.priority;
+
+        std::cout << "Keyword to identify this task (space seperates keywords): ";
+        new_task.keywords = input_parse_keywords();
+
 
 		// to clear the \n residing in the buffer...
 		std::cin.ignore();

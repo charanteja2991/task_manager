@@ -380,7 +380,7 @@ void add_task_to_containers(task new_task)
 
     auto insert_task = [](std::vector<std::shared_ptr<task>> &container, const char arg) mutable
     {
-        size_t startindex = 0, endindex = container.size()-1, midindex;
+        int startindex = 0, endindex = container.size()-1, midindex;
 
         if(arg == 'p' || arg == 'P')
         {
@@ -396,12 +396,8 @@ void add_task_to_containers(task new_task)
                 {
                     startindex = midindex + 1;
                 }
-                else if(container[midindex]->priority == VEC_tasks.back()->priority || startindex == endindex)
-                {
-                    container.insert(container.begin() + midindex, VEC_tasks.back());
-                    break;
-                }
             }
+			container.insert(container.begin() + midindex, VEC_tasks.back());
         }
         else if(arg == 't' || arg == 'T')
         {
@@ -416,13 +412,9 @@ void add_task_to_containers(task new_task)
                 else if(container[midindex]->time_needed < VEC_tasks.back()->time_needed)
                 {
                     startindex = midindex + 1;
-                }
-                else if(container[midindex]->time_needed == VEC_tasks.back()->time_needed || startindex == endindex)
-                {
-                    container.insert(container.begin() + midindex, VEC_tasks.back());
-                    break;
-                }
+				}
             }
+			container.insert(container.begin() + midindex, VEC_tasks.back());
         }
     };
 

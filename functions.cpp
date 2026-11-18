@@ -22,6 +22,10 @@ std::vector<std::shared_ptr<task>>
 // hash map for string : *tasks that makes searching easy through keywords
 std::unordered_map<std::string, std::vector<std::shared_ptr<task>>> UOMAP_global_keywords;
 
+std::ofstream logfile("tmlog.log", std::ios::app);
+
+logger lout(logfile, 'i'), lerr(logfile, 'e'), lwarn(logfile, 'w');
+
 
 
 
@@ -531,6 +535,7 @@ void create_new_task(const std::vector<std::string> &tokens)
 
 void start() noexcept(true)
 {
+    lout << messenger{__FILE__, __LINE__, __PRETTY_FUNCTION__, "started"};
 	// loads task objects into VEC_task, VEC_task_priority, VEC_task_time, UOMAP_global_keywords
 	if(load_tasks_into_containers())
     {
@@ -539,6 +544,7 @@ void start() noexcept(true)
 	else 
 	{
 		std::cerr << "functions.cpp -> start() -> Couldn't load tasks into containers\n";
+        lout << messenger{__FILE__, __LINE__, __PRETTY_FUNCTION__, "ended"};
 		return;
 	}
 

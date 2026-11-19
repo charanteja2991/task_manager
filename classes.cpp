@@ -1,5 +1,4 @@
 #include <string>
-#include <source_location>
 #include <chrono>
 #include <sstream>
 #include <iomanip>
@@ -91,21 +90,10 @@ public:
 
 
 
-struct messenger
-{
-    std::string filename;
-    unsigned int line;
-    std::string function_name;
-    std::string message;
-};
-
-
-
-
-
 class logger
 {
-    std::string level;
+    std::string level, filename, function_name;
+    unsigned int line;
     std::ofstream &logfile;
 
     std::string get_current_time_stamp()
@@ -124,7 +112,7 @@ class logger
 
 public:
 
-    logger(std::ofstream &logfile_, char c) : logfile(logfile_)
+    logger(std::ofstream &logfile_, char c, const std::string &filename, int line, const std::string &function_name) : logfile(logfile_), filename(filename), line(line), function_name(function_name)
     {
         switch(c)
         {
@@ -144,23 +132,13 @@ public:
     template <typename data_type>
     logger& operator << (const data_type &data)
     {
-        // logformat: [time & date] [level] = message
-        logfile << "[" << get_current_time_stamp() << "] [" 
-                << level << "] = "
-                << data << std::endl;
-                      
-        return *this;
-    }
-
-    logger& operator << (const messenger &m)
-    {
         // logformat: [time & date] <filename> (line) 'function_name' [level] = message
         logfile << "[" << get_current_time_stamp() << "] <"
-                << m.filename << "> ("
-                << m.line << ") '"
-                << m.function_name << "' ["
+                << filename << "> ("
+                << line << ") '"
+                << function_name << "' ["
                 << level << "] = "
-                << m.message << std::endl;
+                << data << std::endl;
 
         return *this;
     }

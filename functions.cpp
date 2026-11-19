@@ -11,6 +11,15 @@
 #include <thread>
 #include <utility>
 
+std::ofstream logfile("tmlog.log", std::ios::app);
+
+#define loginfo logger(logfile, 'i', __FILE__, __LINE__, __PRETTY_FUNCTION__)
+#define logerr logger(logfile, 'e', __FILE__, __LINE__, __PRETTY_FUNCTION__)
+#define logwarn logger(logfile, 'w', __FILE__, __LINE__, __PRETTY_FUNCTION__)
+
+
+
+
 
 // this is where all the main tasks addresses are lived.
 std::vector<std::shared_ptr<task>> VEC_tasks; 
@@ -23,11 +32,6 @@ std::vector<std::shared_ptr<task>>
 // hash map for string : *tasks that makes searching easy through keywords
 std::unordered_map<std::string, std::vector<std::shared_ptr<task>>> UOMAP_global_keywords;
 
-std::ofstream logfile("tmlog.log", std::ios::app);
-
-#define logout logger(logfile, 'i', __FILE__, __LINE__, __PRETTY_FUNCTION__)
-#define logerr logger(logfile, 'e', __FILE__, __LINE__, __PRETTY_FUNCTION__)
-#define logwarn logger(logfile, 'w', __FILE__, __LINE__, __PRETTY_FUNCTION__)
 
 
 
@@ -130,24 +134,14 @@ bool load_tasks_into_containers() noexcept(true)
 	std::thread priority_sort_thread(
 		[]()
 		{
-			std::sort(VEC_task_priority.begin(), VEC_task_priority.end()
-        		/*[](std::shared_ptr<task> &a, std::shared_ptr<task> &b) temporarily disabled this
-				{
-					return a->priority > b->priority;
-				}*/
-			);
+			std::sort(VEC_task_priority.begin(), VEC_task_priority.end());
 		}
 	);
 	
 	std::thread time_sort_thread(
 		[]()
 		{
-			std::sort(VEC_task_time.begin(), VEC_task_time.end()
-				/*[](std::shared_ptr<task> &a, std::shared_ptr<task> &b) temporarily disabled this
-				{
-					return a->time_needed > b->time_needed;
-				}*/
-			);
+			std::sort(VEC_task_time.begin(), VEC_task_time.end());
 		}
 	);
 	
@@ -391,8 +385,9 @@ void add_task_to_containers(task new_task)
 
         if(arg == 'p' || arg == 'P')
         {
+            loginfo << "entered into priority (P) condition";
             // this loops locates where should the object be inserted...
-            while(startindex <= endindex)
+            while(startindex < endindex)
             {
                 midindex = startindex + (endindex - startindex) / 2;
 
@@ -410,8 +405,9 @@ void add_task_to_containers(task new_task)
         }
         else if(arg == 't' || arg == 'T')
         {
+            loginfo << "entered into time (T) condition";
             // this loops locates where should the object be inserted...
-            while(startindex <= endindex)
+            while(startindex < endindex)
             {
                 midindex = startindex + (endindex - startindex) / 2;
 
@@ -585,6 +581,8 @@ void start() noexcept(true)
 			{
 				std::cout << "Saving into file..." << '\n';
 			//	save_tasks_into_file();
+                
+                loginfo << "end";
 				return;
 			}
 			else
@@ -597,4 +595,5 @@ void start() noexcept(true)
 			
 		}
 	}
+
 }

@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <mutex>
 #include <string>
 #include <sys/types.h>
 #include <vector>
@@ -283,6 +284,7 @@ unsigned long input_parse_time()
                     }
                     else
                     {
+                        logwarn << "throwing 'invalid_time_day_input'";
                         throw invalid_time_day_input("Invalid Time format\n");
                     }
                 } break;
@@ -297,11 +299,13 @@ unsigned long input_parse_time()
                     }
                     else
                     {
+                        logwarn << "throwing 'invalid_time_day_input'";
                         throw invalid_time_day_input("Invalid Time format\n");
                     }
                     // to avoid 12d12345d....
                     if(day && number > 24)
                     {
+                        logwarn << "throwing 'invalid_time_hour_input'";
                         throw invalid_time_hour_input("Invalid Hour format\n");
                     }
                     else
@@ -321,12 +325,14 @@ unsigned long input_parse_time()
                     }
                     else
                     {
+                        logwarn << "throwing 'invalid_time_input'";
                         throw invalid_time_input("Invalid Time format\n");
                     }
 
                     // to avoid 12d24h12342342m
                     if((day || hour) && number > 60)
                     {
+                        logwarn << "throwing 'invalid_time_minute_input'";
                         throw invalid_time_minute_input("Invalid Minute format\n");
                     }
                     else
@@ -338,6 +344,7 @@ unsigned long input_parse_time()
                 // okavela other than d, m, h letters osthe we return this as false string.
                 default:
                 {
+                    logwarn << "throwing 'invalid_time_input'";
                     throw invalid_time_input("Invalid Time format\n");
                 }
             } // switch end
@@ -349,7 +356,10 @@ unsigned long input_parse_time()
 
             // to avoid 12d24h12342342 where minute doesnt have 'm' at the end
             if((day || hour) && number > 60)
+            {
+                logwarn << "throwing 'invalid_time_minute_input'";
                 throw invalid_time_minute_input("Invalid Minute format\n");
+            }
         } // else end
 	} // range based for loop end
     
@@ -378,14 +388,18 @@ void add_task_to_containers(task new_task)
 {
     // this pushes into main vector, that is VEC_tasks....
     VEC_tasks.push_back(std::make_shared<task>(new_task));
+    std::mutex log_writer_mutex;
 
-    auto insert_task = [](std::vector<std::shared_ptr<task>> &container, const char arg) mutable
+    auto insert_task = [&log_writer_mutex](std::vector<std::shared_ptr<task>> &container, const char arg) mutable
     {
         int startindex = 0, endindex = container.size()-1, midindex;
 
         if(arg == 'p' || arg == 'P')
         {
+            log_writer_mutex.lock();
             loginfo << "entered into priority (P) condition";
+            log_writer_mutex.unlock();
+
             // this loops locates where should the object be inserted...
             while(startindex < endindex)
             {
@@ -405,7 +419,10 @@ void add_task_to_containers(task new_task)
         }
         else if(arg == 't' || arg == 'T')
         {
+            log_writer_mutex.lock();
             loginfo << "entered into time (T) condition";
+            log_writer_mutex.unlock();
+
             // this loops locates where should the object be inserted...
             while(startindex < endindex)
             {
@@ -442,9 +459,9 @@ void add_task_to_containers(task new_task)
 
 
 
-std::unordered_set<std::string> input_parse_keywords()
+void input_parse_keywords(std::unordered_set<std::string> &keywords)
 {
-    std::unordered_set<std::string> keywords;
+    //std::unordered_set<std::string> keywords;
     std::string user_input, chunk;
     std::getline(std::cin, user_input);
 
@@ -461,8 +478,10 @@ std::unordered_set<std::string> input_parse_keywords()
         }
     }
     keywords.insert(chunk);
+    user_input.clear();
+    chunk.clear();
 
-    return keywords;
+    //return keywords;
 }
 
 
@@ -493,7 +512,7 @@ void create_new_task(const std::vector<std::string> &tokens)
 		std::cin >> new_task.priority;
 
         std::cout << "Keyword to identify this task (space seperates keywords): ";
-        new_task.keywords = input_parse_keywords();
+        input_parse_keywords(new_task.keywords);
 
 
 		// to clear the \n residing in the buffer...
@@ -508,6 +527,7 @@ void create_new_task(const std::vector<std::string> &tokens)
         catch(...)
         {
             std::cerr << "Standard Exception: in function.cpp -> create_new_task()\n";
+            logwarn << "Caught an exception";
         }
         
 		std::cout << "Succesfully added Task into database\n";
@@ -519,6 +539,7 @@ void create_new_task(const std::vector<std::string> &tokens)
 	catch(...)
 	{
 		std::cerr << "functions.cpp -> create_new_task() -> standard error probably...\n";
+        logwarn << "Caught an exception";
 	}
 }
 
@@ -533,6 +554,7 @@ void create_new_task(const std::vector<std::string> &tokens)
 
 void start() noexcept(true)
 {
+    loginfo << "\n\n============ NEW START ============\n\n";
 	// loads task objects into VEC_task, VEC_task_priority, VEC_task_time, UOMAP_global_keywords
 	if(load_tasks_into_containers())
     {
@@ -541,7 +563,7 @@ void start() noexcept(true)
 	else 
 	{
 		std::cerr << "functions.cpp -> start() -> Couldn't load tasks into containers\n";
-		return;
+        logerr << "Couldn't load task objects into containers";
 	}
 
 	while(true)
@@ -553,6 +575,7 @@ void start() noexcept(true)
 			if(tokens.at(0) == "new")
 			{
 				create_new_task(tokens);
+				tokens.clear();
 			}
 			else if (tokens.at(0) == "listall")
 			{
@@ -582,7 +605,7 @@ void start() noexcept(true)
 				std::cout << "Saving into file..." << '\n';
 			//	save_tasks_into_file();
                 
-                loginfo << "end";
+                loginfo << "============ END ============";
 				return;
 			}
 			else
@@ -592,8 +615,7 @@ void start() noexcept(true)
 		}
 		catch(...)
 		{
-			
+        			
 		}
 	}
-
 }

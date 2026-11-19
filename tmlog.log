@@ -1,0 +1,22 @@
+[19-11-2026 23:26:27] <functions.cpp> (557) 'void start()' [INFO] = 
+
+============ NEW START ============
+
+
+[19-11-2026 23:26:38] <functions.cpp> (400) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into priority (P) condition
+[19-11-2026 23:26:38] <functions.cpp> (423) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into time (T) condition
+[19-11-2026 23:26:52] <functions.cpp> (400) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into priority (P) condition
+[19-11-2026 23:26:52] <functions.cpp> (423) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into time (T) condition
+[19-11-2026 23:26:55] <functions.cpp> (607) 'void start()' [INFO] = ============ END ============
+[19-11-2026 23:30:48] </home/charanteja/Projects/C++/task_manager/functions.cpp> (557) 'void start()' [INFO] = 
+
+============ NEW START ============
+
+
+[19-11-2026 23:33:21] </home/charanteja/Projects/C++/task_manager/functions.cpp> (557) 'void start()' [INFO] = 
+
+============ NEW START ============
+
+
+[19-11-2026 23:34:39] </home/charanteja/Projects/C++/task_manager/functions.cpp> (400) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into priority (P) condition
+[19-11-2026 23:34:39] </home/charanteja/Projects/C++/task_manager/functions.cpp> (423) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into time (T) condition

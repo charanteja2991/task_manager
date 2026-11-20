@@ -1,70 +1,274 @@
-[19-11-2026 23:26:27] <functions.cpp> (557) 'void start()' [INFO] = 
-
-============ NEW START ============
+[20-11-2026 23:03:46] <functions.cpp> (603) 'void start()' [INFO] = ============ NEW START ============
 
 
-[19-11-2026 23:26:38] <functions.cpp> (400) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into priority (P) condition
-[19-11-2026 23:26:38] <functions.cpp> (423) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into time (T) condition
-[19-11-2026 23:26:52] <functions.cpp> (400) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into priority (P) condition
-[19-11-2026 23:26:52] <functions.cpp> (423) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into time (T) condition
-[19-11-2026 23:26:55] <functions.cpp> (607) 'void start()' [INFO] = ============ END ============
-[19-11-2026 23:30:48] </home/charanteja/Projects/C++/task_manager/functions.cpp> (557) 'void start()' [INFO] = 
+[20-11-2026 23:03:46] <functions.cpp> (604) 'void start()' [INFO] = function start
+[20-11-2026 23:03:46] <functions.cpp> (107) 'bool load_tasks_into_containers()' [INFO] = function start
+[20-11-2026 23:03:46] <functions.cpp> (115) 'bool load_tasks_into_containers()' [INFO] = function end
+[20-11-2026 23:03:46] <functions.cpp> (612) 'void start()' [ERROR] = Couldn't load task objects into containers
+[20-11-2026 23:03:46] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:03:47] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:03:47] <functions.cpp> (544) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:03:50] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:03:51] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:03:51] <functions.cpp> (507) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:03:55] <functions.cpp> (529) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:03:55] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:03:55] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:03:55] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = -1
+[20-11-2026 23:03:55] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:03:55] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = p
+[20-11-2026 23:03:55] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:03:55] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = -1
+[20-11-2026 23:03:55] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:03:55] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = t
+[20-11-2026 23:03:55] <functions.cpp> (494) 'void add_task_to_containers(task)' [INFO] = function end
+[20-11-2026 23:03:55] <functions.cpp> (589) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function end
+[20-11-2026 23:03:55] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:03:56] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:03:56] <functions.cpp> (544) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:03:59] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:04:01] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:04:01] <functions.cpp> (507) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:04:05] <functions.cpp> (529) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:04:05] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:04:05] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:04:05] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:04:05] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:04:05] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:04:05] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:04:05] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:04:05] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:04:05] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = p
+20-11-2026 23:04:05] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = t
+[20-11-2026 23:04:05] <functions.cpp> (494) 'void add_task_to_containers(task)' [INFO] = function end
+[20-11-2026 23:04:05] <functions.cpp> (589) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function end
+[20-11-2026 23:04:05] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:04:06] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:04:06] <functions.cpp> (544) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:04:09] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:04:11] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:04:11] <functions.cpp> (507) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:04:16] <functions.cpp> (529) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:04:16] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:04:16] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:04:16] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:04:16] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 1
+[20-11-2026 23:04:16] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:04:16] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = p
+20-11-2026 23:04:16] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 1
+[20-11-2026 23:04:16] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:04:16] <functions.cpp> (445) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = t
+[20-11-2026 23:09:54] <functions.cpp> (606) 'void start()' [INFO] = ============ NEW START ============
 
-============ NEW START ============
+
+[20-11-2026 23:09:54] <functions.cpp> (607) 'void start()' [INFO] = function start
+[20-11-2026 23:09:54] <functions.cpp> (107) 'bool load_tasks_into_containers()' [INFO] = function start
+[20-11-2026 23:09:54] <functions.cpp> (115) 'bool load_tasks_into_containers()' [INFO] = function end
+[20-11-2026 23:09:54] <functions.cpp> (615) 'void start()' [ERROR] = Couldn't load task objects into containers
+[20-11-2026 23:09:54] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:09:55] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:09:55] <functions.cpp> (547) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:09:57] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:09:58] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:09:59] <functions.cpp> (510) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:10:03] <functions.cpp> (532) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:10:03] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:10:03] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = p
+[20-11-2026 23:10:03] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:10:03] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = -1
+[20-11-2026 23:10:03] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:10:03] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = t
+[20-11-2026 23:10:03] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:10:03] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = -1
+[20-11-2026 23:10:03] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:10:03] <functions.cpp> (497) 'void add_task_to_containers(task)' [INFO] = function end
+[20-11-2026 23:10:03] <functions.cpp> (592) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function end
+[20-11-2026 23:10:03] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:10:04] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:10:04] <functions.cpp> (547) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:10:08] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:10:10] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:10:10] <functions.cpp> (510) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:10:14] <functions.cpp> (532) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:10:14] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:10:14] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = p
+[20-11-2026 23:10:14] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:10:14] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:10:14] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:10:14] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = t
+[20-11-2026 23:10:14] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:10:14] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:10:14] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:10:14] <functions.cpp> (497) 'void add_task_to_containers(task)' [INFO] = function end
+[20-11-2026 23:10:14] <functions.cpp> (592) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function end
+[20-11-2026 23:10:14] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:10:15] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:10:15] <functions.cpp> (547) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:10:17] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:10:19] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:10:20] <functions.cpp> (510) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:10:24] <functions.cpp> (532) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:10:24] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:10:24] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = p
+[20-11-2026 23:10:24] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:10:24] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 1
+[20-11-2026 23:10:24] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:10:24] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = t
+[20-11-2026 23:10:24] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:10:24] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 1
+[20-11-2026 23:10:24] <functions.cpp> (447) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = 0
+[20-11-2026 23:19:29] <functions.cpp> (616) 'void start()' [INFO] = ============ NEW START ============
 
 
-[19-11-2026 23:33:21] </home/charanteja/Projects/C++/task_manager/functions.cpp> (557) 'void start()' [INFO] = 
-
-============ NEW START ============
-
-
-[19-11-2026 23:34:39] </home/charanteja/Projects/C++/task_manager/functions.cpp> (400) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into priority (P) condition
-[19-11-2026 23:34:39] </home/charanteja/Projects/C++/task_manager/functions.cpp> (423) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into time (T) condition
-[20-11-2026 20:11:39] </home/charanteja/Projects/C++/task_manager/functions.cpp> (557) 'void start()' [INFO] = 
-
-============ NEW START ============
-
-
-[20-11-2026 20:11:39] </home/charanteja/Projects/C++/task_manager/functions.cpp> (566) 'void start()' [ERROR] = Couldn't load task objects into containers
-[20-11-2026 20:12:41] </home/charanteja/Projects/C++/task_manager/functions.cpp> (557) 'void start()' [INFO] = 
-
-============ NEW START ============
-
-
-[20-11-2026 20:12:41] </home/charanteja/Projects/C++/task_manager/functions.cpp> (566) 'void start()' [ERROR] = Couldn't load task objects into containers
-[20-11-2026 20:13:39] </home/charanteja/Projects/C++/task_manager/functions.cpp> (558) 'void start()' [INFO] = 
-
-============ NEW START ============
-
-
-[20-11-2026 20:13:39] </home/charanteja/Projects/C++/task_manager/functions.cpp> (567) 'void start()' [ERROR] = Couldn't load task objects into containers
-[20-11-2026 20:14:30] </home/charanteja/Projects/C++/task_manager/functions.cpp> (558) 'void start()' [INFO] = 
-
-============ NEW START ============
-
-
-[20-11-2026 20:14:30] </home/charanteja/Projects/C++/task_manager/functions.cpp> (567) 'void start()' [ERROR] = Couldn't load task objects into containers
-[20-11-2026 20:17:02] </home/charanteja/Projects/C++/task_manager/functions.cpp> (558) 'void start()' [INFO] = 
-
-============ NEW START ============
-
-
-[20-11-2026 20:17:02] </home/charanteja/Projects/C++/task_manager/functions.cpp> (567) 'void start()' [ERROR] = Couldn't load task objects into containers
-[20-11-2026 20:18:59] </home/charanteja/Projects/C++/task_manager/functions.cpp> (400) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into priority (P) condition
-[20-11-2026 20:18:59] </home/charanteja/Projects/C++/task_manager/functions.cpp> (423) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into time (T) condition
-[20-11-2026 20:20:01] </home/charanteja/Projects/C++/task_manager/functions.cpp> (400) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into priority (P) condition
-[20-11-2026 20:20:01] </home/charanteja/Projects/C++/task_manager/functions.cpp> (423) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into time (T) condition
-[20-11-2026 20:20:28] </home/charanteja/Projects/C++/task_manager/functions.cpp> (609) 'void start()' [INFO] = ============ END ============
-[20-11-2026 20:21:21] <functions.cpp> (558) 'void start()' [INFO] = 
-
-============ NEW START ============
+[20-11-2026 23:19:29] <functions.cpp> (617) 'void start()' [INFO] = function start
+[20-11-2026 23:19:29] <functions.cpp> (107) 'bool load_tasks_into_containers()' [INFO] = function start
+[20-11-2026 23:19:29] <functions.cpp> (115) 'bool load_tasks_into_containers()' [INFO] = function end
+[20-11-2026 23:19:29] <functions.cpp> (625) 'void start()' [ERROR] = Couldn't load task objects into containers
+[20-11-2026 23:19:29] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:19:30] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:19:30] <functions.cpp> (557) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:19:33] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:19:35] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:19:35] <functions.cpp> (520) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:19:38] <functions.cpp> (542) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:19:38] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:19:38] <functions.cpp> (507) 'void add_task_to_containers(task)' [INFO] = function end
+[20-11-2026 23:19:38] <functions.cpp> (602) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function end
+[20-11-2026 23:19:38] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:19:42] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:19:42] <functions.cpp> (557) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:19:44] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:19:46] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:19:46] <functions.cpp> (520) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:19:51] <functions.cpp> (542) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:19:51] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:19:51] <functions.cpp> (507) 'void add_task_to_containers(task)' [INFO] = function end
+[20-11-2026 23:19:51] <functions.cpp> (602) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function end
+[20-11-2026 23:19:51] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:19:53] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:19:53] <functions.cpp> (557) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:19:57] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:20:00] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:20:01] <functions.cpp> (520) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:20:05] <functions.cpp> (542) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:20:05] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:21:23] <functions.cpp> (624) 'void start()' [INFO] = ============ NEW START ============
 
 
-[20-11-2026 20:21:21] <functions.cpp> (567) 'void start()' [ERROR] = Couldn't load task objects into containers
-[20-11-2026 20:22:53] <functions.cpp> (400) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into priority (P) condition
-[20-11-2026 20:22:53] <functions.cpp> (423) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into time (T) condition
-[20-11-2026 20:23:05] <functions.cpp> (400) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into priority (P) condition
-[20-11-2026 20:23:05] <functions.cpp> (423) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into time (T) condition
-[20-11-2026 20:23:35] <functions.cpp> (400) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into priority (P) condition
-[20-11-2026 20:23:35] <functions.cpp> (423) 'add_task_to_containers(task)::<lambda(std::vector<std::shared_ptr<task> >&, char)> mutable' [INFO] = entered into time (T) condition
-[20-11-2026 20:23:41] <functions.cpp> (609) 'void start()' [INFO] = ============ END ============
+[20-11-2026 23:21:23] <functions.cpp> (625) 'void start()' [INFO] = function start
+[20-11-2026 23:21:23] <functions.cpp> (107) 'bool load_tasks_into_containers()' [INFO] = function start
+[20-11-2026 23:21:23] <functions.cpp> (115) 'bool load_tasks_into_containers()' [INFO] = function end
+[20-11-2026 23:21:23] <functions.cpp> (633) 'void start()' [ERROR] = Couldn't load task objects into containers
+[20-11-2026 23:21:23] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:21:24] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:21:24] <functions.cpp> (565) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:21:27] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:21:28] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:21:29] <functions.cpp> (528) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:21:32] <functions.cpp> (550) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:21:32] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:21:32] <functions.cpp> (515) 'void add_task_to_containers(task)' [INFO] = function end
+[20-11-2026 23:21:32] <functions.cpp> (610) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function end
+[20-11-2026 23:21:32] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:21:33] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:21:33] <functions.cpp> (565) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:21:36] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:21:38] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:21:38] <functions.cpp> (528) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:21:42] <functions.cpp> (550) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:21:42] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:21:42] <functions.cpp> (515) 'void add_task_to_containers(task)' [INFO] = function end
+[20-11-2026 23:21:42] <functions.cpp> (610) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function end
+[20-11-2026 23:21:42] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:21:44] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:21:44] <functions.cpp> (565) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:21:46] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:21:48] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:21:48] <functions.cpp> (528) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:21:52] <functions.cpp> (550) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:21:52] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:21:52] <functions.cpp> (515) 'void add_task_to_containers(task)' [INFO] = function end
+[20-11-2026 23:21:52] <functions.cpp> (610) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function end
+[20-11-2026 23:21:52] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:21:54] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:21:54] <functions.cpp> (565) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:21:58] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:22:01] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:22:02] <functions.cpp> (528) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:22:06] <functions.cpp> (550) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:22:06] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:22:06] <functions.cpp> (515) 'void add_task_to_containers(task)' [INFO] = function end
+[20-11-2026 23:22:06] <functions.cpp> (610) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function end
+[20-11-2026 23:22:06] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:22:07] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:22:07] <functions.cpp> (565) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:22:14] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:22:16] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:22:18] <functions.cpp> (528) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:22:24] <functions.cpp> (550) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:22:24] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:22:24] <functions.cpp> (515) 'void add_task_to_containers(task)' [INFO] = function end
+[20-11-2026 23:22:24] <functions.cpp> (610) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function end
+[20-11-2026 23:22:24] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:22:26] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:22:26] <functions.cpp> (208) 'void show_tasks(std::vector<std::shared_ptr<task> >, int)' [INFO] = function start
+[20-11-2026 23:22:26] <functions.cpp> (172) 'std::string convert_string_to_time(long unsigned int)' [INFO] = functions start
+[20-11-2026 23:22:26] <functions.cpp> (193) 'std::string convert_string_to_time(long unsigned int)' [INFO] = function end
+[20-11-2026 23:22:26] <functions.cpp> (172) 'std::string convert_string_to_time(long unsigned int)' [INFO] = functions start
+[20-11-2026 23:22:26] <functions.cpp> (193) 'std::string convert_string_to_time(long unsigned int)' [INFO] = function end
+[20-11-2026 23:22:26] <functions.cpp> (172) 'std::string convert_string_to_time(long unsigned int)' [INFO] = functions start
+[20-11-2026 23:22:26] <functions.cpp> (193) 'std::string convert_string_to_time(long unsigned int)' [INFO] = function end
+[20-11-2026 23:22:26] <functions.cpp> (172) 'std::string convert_string_to_time(long unsigned int)' [INFO] = functions start
+[20-11-2026 23:22:26] <functions.cpp> (193) 'std::string convert_string_to_time(long unsigned int)' [INFO] = function end
+[20-11-2026 23:22:26] <functions.cpp> (172) 'std::string convert_string_to_time(long unsigned int)' [INFO] = functions start
+[20-11-2026 23:22:26] <functions.cpp> (193) 'std::string convert_string_to_time(long unsigned int)' [INFO] = function end
+[20-11-2026 23:22:26] <functions.cpp> (221) 'void show_tasks(std::vector<std::shared_ptr<task> >, int)' [INFO] = function end
+[20-11-2026 23:22:26] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:22:33] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:22:33] <functions.cpp> (565) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:22:38] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:22:40] <functions.cpp> (424) 'long unsigned int input_string_to_time()' [INFO] = function end
+[20-11-2026 23:22:41] <functions.cpp> (528) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = functions start
+[20-11-2026 23:22:45] <functions.cpp> (550) 'std::unordered_set<std::__cxx11::basic_string<char> > input_task_keywords()' [INFO] = function end
+[20-11-2026 23:22:45] <functions.cpp> (438) 'void add_task_to_containers(task)' [INFO] = function start
+[20-11-2026 23:22:45] <functions.cpp> (515) 'void add_task_to_containers(task)' [INFO] = function end
+[20-11-2026 23:22:45] <functions.cpp> (610) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function end
+[20-11-2026 23:22:45] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:22:47] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:22:47] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:22:50] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:22:50] <functions.cpp> (208) 'void show_tasks(std::vector<std::shared_ptr<task> >, int)' [INFO] = function start
+[20-11-2026 23:22:50] <functions.cpp> (172) 'std::string convert_string_to_time(long unsigned int)' [INFO] = functions start
+[20-11-2026 23:22:50] <functions.cpp> (193) 'std::string convert_string_to_time(long unsigned int)' [INFO] = function end
+[20-11-2026 23:22:50] <functions.cpp> (172) 'std::string convert_string_to_time(long unsigned int)' [INFO] = functions start
+[20-11-2026 23:22:50] <functions.cpp> (193) 'std::string convert_string_to_time(long unsigned int)' [INFO] = function end
+[20-11-2026 23:22:50] <functions.cpp> (172) 'std::string convert_string_to_time(long unsigned int)' [INFO] = functions start
+[20-11-2026 23:22:50] <functions.cpp> (193) 'std::string convert_string_to_time(long unsigned int)' [INFO] = function end
+[20-11-2026 23:22:50] <functions.cpp> (172) 'std::string convert_string_to_time(long unsigned int)' [INFO] = functions start
+[20-11-2026 23:22:50] <functions.cpp> (193) 'std::string convert_string_to_time(long unsigned int)' [INFO] = function end
+[20-11-2026 23:22:50] <functions.cpp> (172) 'std::string convert_string_to_time(long unsigned int)' [INFO] = functions start
+[20-11-2026 23:22:50] <functions.cpp> (193) 'std::string convert_string_to_time(long unsigned int)' [INFO] = function end
+[20-11-2026 23:22:50] <functions.cpp> (172) 'std::string convert_string_to_time(long unsigned int)' [INFO] = functions start
+[20-11-2026 23:22:50] <functions.cpp> (193) 'std::string convert_string_to_time(long unsigned int)' [INFO] = function end
+[20-11-2026 23:22:50] <functions.cpp> (221) 'void show_tasks(std::vector<std::shared_ptr<task> >, int)' [INFO] = function end
+[20-11-2026 23:22:50] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:22:56] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:22:56] <functions.cpp> (675) 'void start()' [INFO] = function end
+[20-11-2026 23:22:56] <functions.cpp> (676) 'void start()' [INFO] = ============ END ============
+[20-11-2026 23:23:35] <functions.cpp> (615) 'void start()' [INFO] = ============ NEW START ============
+
+
+[20-11-2026 23:23:35] <functions.cpp> (616) 'void start()' [INFO] = function start
+[20-11-2026 23:23:35] <functions.cpp> (107) 'bool load_tasks_into_containers()' [INFO] = function start
+[20-11-2026 23:23:35] <functions.cpp> (115) 'bool load_tasks_into_containers()' [INFO] = function end
+[20-11-2026 23:23:35] <functions.cpp> (624) 'void start()' [ERROR] = Couldn't load task objects into containers
+[20-11-2026 23:23:35] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:23:36] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:23:36] <functions.cpp> (556) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function start
+[20-11-2026 23:23:38] <functions.cpp> (309) 'long unsigned int input_string_to_time()' [INFO] = function start
+[20-11-2026 23:23:41] <functions.cpp> (395) 'long unsigned int input_string_to_time()' [WARNING] = throwing 'invalid_time_input'
+[20-11-2026 23:23:41] <functions.cpp> (601) 'void create_new_task(const std::vector<std::__cxx11::basic_string<char> >&)' [INFO] = function end
+[20-11-2026 23:23:41] <functions.cpp> (235) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function start
+[20-11-2026 23:23:44] <functions.cpp> (278) 'std::vector<std::__cxx11::basic_string<char> > get_input()' [INFO] = function end
+[20-11-2026 23:23:44] <functions.cpp> (666) 'void start()' [INFO] = function end
+[20-11-2026 23:23:44] <functions.cpp> (667) 'void start()' [INFO] = ============ END ============

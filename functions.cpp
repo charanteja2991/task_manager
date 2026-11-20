@@ -44,6 +44,7 @@ std::unordered_map<std::string, std::vector<std::shared_ptr<task>>> UOMAP_global
 
 task string_to_task_object(std::string &str)
 {
+    loginfo << "function start";
 	task task_obj;
 	std::string chunk;
 	int where = 0;
@@ -73,7 +74,7 @@ task string_to_task_object(std::string &str)
 					task_obj.keywords.insert(chunk);
 					break;
 				default:
-					std::cerr << "functions.cpp -> string_to_task_object() -> faulty variable 'where' values\n";
+					logerr << "faulty variable 'where' values\n";
 			}
 
 			if(where != 5)
@@ -88,6 +89,7 @@ task string_to_task_object(std::string &str)
 	}
 	task_obj.keywords.insert(chunk);
 
+    loginfo << "Function end";
 	return task_obj;	
 }
 
@@ -102,6 +104,7 @@ task string_to_task_object(std::string &str)
 
 bool load_tasks_into_containers() noexcept(true)
 {
+    loginfo << "function start";
 	// opening tasks.txt file
 	std::ifstream tasks_file_reader("tasks.txt");
 	
@@ -109,6 +112,7 @@ bool load_tasks_into_containers() noexcept(true)
 	if(!tasks_file_reader.is_open())
 	{
 		std::cerr << "tasks.txt file not found\n";
+        loginfo << "function end";
 		return false;
 	}	
 	
@@ -150,7 +154,44 @@ bool load_tasks_into_containers() noexcept(true)
 	time_sort_thread.join(); 
 
 	
+    loginfo << "function end";
 	return true;
+}
+
+
+
+
+
+
+
+
+
+
+std::string convert_string_to_time(unsigned long time)
+{
+    loginfo << "functions start";
+    std::string str_time;
+    unsigned long day_in_mins = 24 * 60, hour_in_mins = 60;
+    
+    if(time / day_in_mins > 0)
+    {
+        str_time += (std::to_string(time / day_in_mins) + 'd');
+        time %= day_in_mins;
+    }
+    if(time / hour_in_mins > 0)
+    {
+        str_time += (std::to_string(time / hour_in_mins) + 'h');
+        time %= hour_in_mins;
+    }
+    if(time > 0)
+    {
+        str_time += (std::to_string(time) + 'm');
+    }
+
+
+
+    loginfo << "function end";
+    return str_time;
 }
 
 
@@ -164,17 +205,20 @@ bool load_tasks_into_containers() noexcept(true)
 
 void show_tasks(std::vector<std::shared_ptr<task>> temp, int iterate = 10) noexcept(true)
 {
+    loginfo << "function start";
 	std::cout << "======================================================================================================\n";
 	/************************** temporary code START ********************************/
 	for(int i = 0; i < temp.size() && i < iterate; i++)
 	{
 		std::cout << temp[i]->title << "    "
 				  << temp[i]->description << "    "
-				  << temp[i]->time_needed << "    "
+				  << convert_string_to_time(temp[i]->time_needed) << "    "
 				  << temp[i]->priority << '\n';
 	}
 	/************************** temporary code END ********************************/
 	std::cout << "======================================================================================================\n";
+
+    loginfo << "function end";
 }
 
 
@@ -188,6 +232,7 @@ void show_tasks(std::vector<std::shared_ptr<task>> temp, int iterate = 10) noexc
 
 std::vector<std::string> get_input() noexcept(true)
 {
+    loginfo << "function start";
 	std::string input, chunk;
 	std::cout << "\n>> ";
 	std::getline(std::cin, input);
@@ -230,6 +275,8 @@ std::vector<std::string> get_input() noexcept(true)
 	if(!chunk.empty())
 		tokens.push_back(chunk);
 
+    loginfo << "function end";
+
 	return tokens;
 }
 
@@ -257,8 +304,9 @@ bool save_tasks_into_file()
 
 
 
-unsigned long input_parse_time()
+unsigned long input_string_to_time()
 {
+    loginfo << "function start";
 	std::string time, chunk;
 	std::getline(std::cin, time);
 	unsigned long UL_time = 0, number = 0;
@@ -373,6 +421,7 @@ unsigned long input_parse_time()
             UL_time = number; // this is for 1234, only numbers that are taken in as minutes
     }
 
+    loginfo << "function end";
 	return UL_time;
 }
 
@@ -386,25 +435,26 @@ unsigned long input_parse_time()
 
 void add_task_to_containers(task new_task)
 {
+    loginfo << "function start";
     // this pushes into main vector, that is VEC_tasks....
     VEC_tasks.push_back(std::make_shared<task>(new_task));
-    std::mutex log_writer_mutex;
+    std::mutex m;
 
-    auto insert_task = [&log_writer_mutex](std::vector<std::shared_ptr<task>> &container, const char arg) mutable
+    auto insert_task = [&m](std::vector<std::shared_ptr<task>> &container, const char arg) mutable
     {
-        int startindex = 0, endindex = container.size()-1, midindex;
+        int startindex = 0, endindex = container.size()-1, midindex = 0;
+      
+        m.lock();
+        std::cout << arg << " " << startindex << " " << endindex << " " << midindex << "\n";
+        m.unlock();
 
         if(arg == 'p' || arg == 'P')
         {
-            log_writer_mutex.lock();
-            loginfo << "entered into priority (P) condition";
-            log_writer_mutex.unlock();
-
             // this loops locates where should the object be inserted...
             while(startindex < endindex)
             {
                 midindex = startindex + (endindex - startindex) / 2;
-
+               
                 if(container[midindex]->priority > VEC_tasks.back()->priority)
                 {
                     endindex = midindex - 1;
@@ -413,16 +463,16 @@ void add_task_to_containers(task new_task)
                 {
                     startindex = midindex + 1;
                 }
+                else
+                {
+                    break;
+                }
             }
 
 			container.insert(container.begin() + midindex, VEC_tasks.back());
         }
         else if(arg == 't' || arg == 'T')
         {
-            log_writer_mutex.lock();
-            loginfo << "entered into time (T) condition";
-            log_writer_mutex.unlock();
-
             // this loops locates where should the object be inserted...
             while(startindex < endindex)
             {
@@ -436,19 +486,24 @@ void add_task_to_containers(task new_task)
                 {
                     startindex = midindex + 1;
 				}
+                else
+                {
+                    break;
+                }
             }
 
 			container.insert(container.begin() + midindex, VEC_tasks.back());
         }
     };
 
-    
 
     std::thread priority_insert_thread(insert_task, std::ref(VEC_task_priority), 'p');
     std::thread time_insert_thread(insert_task, std::ref(VEC_task_time), 't');
 
     priority_insert_thread.join();
     time_insert_thread.join();
+
+    loginfo << "function end";
 }
 
 
@@ -459,8 +514,9 @@ void add_task_to_containers(task new_task)
 
 
 
-std::unordered_set<std::string> input_parse_keywords()
+std::unordered_set<std::string> input_task_keywords()
 {
+    loginfo << "functions start";
     std::unordered_set<std::string> keywords;
     std::string user_input, chunk;
 	std::cin.ignore();
@@ -482,6 +538,7 @@ std::unordered_set<std::string> input_parse_keywords()
     user_input.clear();
     chunk.clear();
 
+    loginfo << "function end";
     return keywords;
 }
 
@@ -496,6 +553,7 @@ std::unordered_set<std::string> input_parse_keywords()
 
 void create_new_task(const std::vector<std::string> &tokens)
 {
+    loginfo << "function start";
     task new_task;
 
 	try
@@ -507,14 +565,15 @@ void create_new_task(const std::vector<std::string> &tokens)
 		std::getline(std::cin, new_task.description);
 
 		std::cout << "Time needed to complete this task(XdXhXm): ";
-		new_task.time_needed = input_parse_time();
+		new_task.time_needed = input_string_to_time();
 
 		std::cout << "Priority of this task compared to other tasks: ";
 		std::cin >> new_task.priority;
 
         std::cout << "Keyword to identify this task (space seperates keywords): ";
-        new_task.keywords = input_parse_keywords();
+        new_task.keywords = input_task_keywords();
 
+        new_task.completed = false;
 
         VEC_tasks.push_back(std::make_shared<task>(new_task));
 
@@ -539,6 +598,7 @@ void create_new_task(const std::vector<std::string> &tokens)
 		std::cerr << "functions.cpp -> create_new_task() -> standard error probably...\n";
         logwarn << "Caught an exception";
 	}
+    loginfo << "function end";
 }
 
 
@@ -552,7 +612,8 @@ void create_new_task(const std::vector<std::string> &tokens)
 
 void start() noexcept(true)
 {
-    loginfo << "\n\n============ NEW START ============\n\n";
+    loginfo << "============ NEW START ============\n\n";
+    loginfo << "function start";
 	// loads task objects into VEC_task, VEC_task_priority, VEC_task_time, UOMAP_global_keywords
 	if(load_tasks_into_containers())
     {
@@ -560,7 +621,6 @@ void start() noexcept(true)
     }
 	else 
 	{
-		std::cerr << "functions.cpp -> start() -> Couldn't load tasks into containers\n";
         logerr << "Couldn't load task objects into containers";
 	}
 
@@ -603,6 +663,7 @@ void start() noexcept(true)
 				std::cout << "Saving into file..." << '\n';
 			//	save_tasks_into_file();
                 
+                loginfo << "function end";
                 loginfo << "============ END ============";
 				return;
 			}

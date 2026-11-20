@@ -459,10 +459,11 @@ void add_task_to_containers(task new_task)
 
 
 
-void input_parse_keywords(std::unordered_set<std::string> &keywords)
+std::unordered_set<std::string> input_parse_keywords()
 {
-    //std::unordered_set<std::string> keywords;
+    std::unordered_set<std::string> keywords;
     std::string user_input, chunk;
+	std::cin.ignore();
     std::getline(std::cin, user_input);
 
     for(const char &c: user_input)
@@ -481,7 +482,7 @@ void input_parse_keywords(std::unordered_set<std::string> &keywords)
     user_input.clear();
     chunk.clear();
 
-    //return keywords;
+    return keywords;
 }
 
 
@@ -512,11 +513,8 @@ void create_new_task(const std::vector<std::string> &tokens)
 		std::cin >> new_task.priority;
 
         std::cout << "Keyword to identify this task (space seperates keywords): ";
-        input_parse_keywords(new_task.keywords);
+        new_task.keywords = input_parse_keywords();
 
-
-		// to clear the \n residing in the buffer...
-		std::cin.ignore();
 
         VEC_tasks.push_back(std::make_shared<task>(new_task));
 

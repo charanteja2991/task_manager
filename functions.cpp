@@ -111,7 +111,7 @@ bool load_tasks_into_containers() noexcept(true)
 	// if opened file doesnt open, this function returns false
 	if(!tasks_file_reader.is_open())
 	{
-		std::cerr << "tasks.txt file not found\n";
+		std::cerr << "No Tasks found\n";
         loginfo << "function end";
 		return false;
 	}	
@@ -206,7 +206,7 @@ std::string convert_string_to_time(unsigned long time)
 void show_tasks(std::vector<std::shared_ptr<task>> temp, int iterate = 10) noexcept(true)
 {
     loginfo << "function start";
-	std::cout << "======================================================================================================\n";
+	std::cout << "\n======================================================================================================\n\n";
 	/************************** temporary code START ********************************/
 	for(int i = 0; i < temp.size() && i < iterate; i++)
 	{
@@ -216,7 +216,7 @@ void show_tasks(std::vector<std::shared_ptr<task>> temp, int iterate = 10) noexc
 				  << temp[i]->priority << '\n';
 	}
 	/************************** temporary code END ********************************/
-	std::cout << "======================================================================================================\n";
+	std::cout << "\n======================================================================================================\n";
 
     loginfo << "function end";
 }
@@ -291,7 +291,29 @@ std::vector<std::string> get_input() noexcept(true)
 
 bool save_tasks_into_file()
 {
-	std::ofstream tasks_file_writer("tasks.txt", std::ios::out);
+    loginfo << "Function start";
+	std::ofstream tasks_file_writer("tasks.txt");
+    
+    for(std::shared_ptr<task> ptr: VEC_tasks)
+    {
+        std::string data = "";
+        
+        data += (ptr->title + '|' 
+              + ptr->description + '|'
+              + std::to_string(ptr->time_needed) + '|'
+              + std::to_string(ptr->priority) + '|'
+              + std::to_string(ptr->completed) + '|');
+
+        for(const std::string &s: ptr->keywords)
+        {
+            data += (s + ',');
+        }
+        data.resize(data.size()-1);
+        
+        tasks_file_writer << data << '\n';
+    }
+
+    loginfo << "function end";
 	return true;
 }
 
@@ -438,16 +460,11 @@ void add_task_to_containers(task new_task)
     loginfo << "function start";
     // this pushes into main vector, that is VEC_tasks....
     VEC_tasks.push_back(std::make_shared<task>(new_task));
-    std::mutex m;
 
-    auto insert_task = [&m](std::vector<std::shared_ptr<task>> &container, const char arg) mutable
+    auto insert_task = [](std::vector<std::shared_ptr<task>> &container, const char arg) mutable
     {
         int startindex = 0, endindex = container.size()-1, midindex = 0;
       
-        m.lock();
-        std::cout << arg << " " << startindex << " " << endindex << " " << midindex << "\n";
-        m.unlock();
-
         if(arg == 'p' || arg == 'P')
         {
             // this loops locates where should the object be inserted...
@@ -575,8 +592,6 @@ void create_new_task(const std::vector<std::string> &tokens)
 
         new_task.completed = false;
 
-        VEC_tasks.push_back(std::make_shared<task>(new_task));
-
         try
         {
             add_task_to_containers(new_task);
@@ -661,7 +676,8 @@ void start() noexcept(true)
 			else if (tokens.at(0) == "exit")
 			{
 				std::cout << "Saving into file..." << '\n';
-			//	save_tasks_into_file();
+			    save_tasks_into_file();
+                std::cout << "Done\n";
                 
                 loginfo << "function end";
                 loginfo << "============ END ============";
